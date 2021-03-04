@@ -1,9 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import {
+  BrowserRouter as Router, Switch, Route, Redirect,
+} from 'react-router-dom';
 import Navigation from '../Navigation';
 import Login from '../Login';
 import Register from '../Register';
-import Profile from '../Profile';
+// import Profile from '../Profile';
+import Card from '../Card';
 
 export default function MainPage() {
   const auth = false;
@@ -17,7 +20,7 @@ export default function MainPage() {
           <Route exact path="/register">
             <Register />
           </Route>
-          <Redirect to='/'/>
+          <Redirect to="/" />
         </Switch>
       </Router>
     );
@@ -27,7 +30,7 @@ export default function MainPage() {
       <Navigation />
       <Switch>
         <Route exact path="/">
-          <Profile />
+          <Card />
         </Route>
         <Redirect to="/" />
       </Switch>
