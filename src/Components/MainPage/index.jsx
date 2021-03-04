@@ -39,7 +39,7 @@ export default function MainPage() {
         <Route exact path="/yourPayment">
           <Payment />
         </Route>
-        <Route exact path="/yourProfile">
+        <Route exact path="/profile">
           <Profile />
         </Route>
         <Route exact path="/register">

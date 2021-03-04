@@ -8,6 +8,11 @@ export default function PaymentForm() {
   const [expiry, setExpiry] = useState('');
   const [cvc, setCvc] = useState('');
   const [focus, setFocus] = useState('');
+  const [money, setMoney] = useState('');
+
+  function handleSubmitInvait() {
+    alert(money);
+  }
 
   return (
     <div id="PaymentForm">
@@ -18,7 +23,7 @@ export default function PaymentForm() {
         fuulname={fullname}
         number={number}
       />
-      <form>
+      <form onSubmit={handleSubmitInvait}>
         <input
           type="tel"
           name="number"
@@ -49,6 +54,14 @@ export default function PaymentForm() {
           placeholder="CVC"
           value={cvc}
           onChange={(e) => setCvc(e.target.value)}
+          onFocus={(e) => setFocus(e.target.name)}
+        />
+        <input
+          type="number"
+          name="money"
+          placeholder="Сумма"
+          value={money}
+          onChange={(e) => setMoney(e.target.value)}
           onFocus={(e) => setFocus(e.target.name)}
         />
         <button type="submit">Send</button>
