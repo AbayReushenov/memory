@@ -35,3 +35,15 @@ export async function registrationWithEmail(email, password) {
   const responce = await firebase.auth().createUserWithEmailAndPassword(email, password);
   return responce;
 }
+
+export async function checkAuth() {
+  await firebase.auth().onAuthStateChanged((alive) => {
+    if (alive) {
+      console.log('авторизация жива');
+    } else {
+      console.log('авторизации нету');
+    }
+  });
+}
+
+export default firebase;

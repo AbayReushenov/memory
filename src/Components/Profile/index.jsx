@@ -1,6 +1,14 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+import firebase from '../../firebase/firebase';
 
 export default function Profile() {
+  const history = useHistory();
+  const logOut = async () => {
+    await firebase.auth().signOut().then(() => history.push('/'));
+    history.push('/');
+  };
+
   const profile = {
     name: 'Лев Николаевич Толстой',
     email: 'karenin@email.com',
@@ -27,6 +35,7 @@ export default function Profile() {
           {profile.money}
         </li>
       </ul>
+      <button type="button" onClick={logOut}>выйти</button>
     </div>
   );
 }

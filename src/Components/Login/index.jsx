@@ -1,22 +1,32 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { signIn, signOut } from '../../redux/actionCreators/authAction';
 import * as fire from '../../firebase/firebase';
 
 export default function Login() {
   const { register, handleSubmit, errors } = useForm();
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const onSubmit = async (data) => {
     console.log('submit');
-    const user = await fire.mailAuth(data.Email, data.password);
-    console.log(user);
+    try {
+      const user = await fire.mailAuth(data.Email, data.password);
+      console.log(user);
+      dispatch(signIn(user));
+      history.push('/');
+    } catch (error) {
+      history.push('/login');
+    }
   };
 
   const googleAuthorisation = async () => {
     try {
       const user = await fire.googleAuth();
       console.log(user);
+      dispatch(signIn(user));
       history.push('/');
     } catch (error) {
       history.push('/login');
@@ -26,6 +36,7 @@ export default function Login() {
   const logOut = async () => {
     const responce = await fire.logOut();
     console.log('logOut', responce);
+    dispatch(signOut());
     history.push('/');
   };
 
