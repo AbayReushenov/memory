@@ -9,7 +9,12 @@ import Navigation from '../Navigation';
 import Login from '../Login';
 import Register from '../Register';
 import Profile from '../Profile';
+<<<<<<< HEAD
 import CreateCardForm from '../CreateCardForm';
+=======
+import Card from '../Card';
+import Payment from '../Payment';
+>>>>>>> card
 
 export default function MainPage() {
   const auth = true;
@@ -33,6 +38,12 @@ export default function MainPage() {
       <Navigation />
       <Switch>
         <Route exact path="/">
+          <Card />
+        </Route>
+        <Route exact path="/yourPayment">
+          <Payment />
+        </Route>
+        <Route exact path="/profile">
           <Profile />
         </Route>
         <Route exact path="/createCard">

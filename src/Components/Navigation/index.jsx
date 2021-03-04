@@ -10,6 +10,7 @@ export default function Navigation() {
       <NavLink to="/login">Авторизация</NavLink>
       <NavLink to="/">Home</NavLink>
       <NavLink to="/yuorCard">Yuor card</NavLink>
+      <NavLink to="/yourPayment">Your Payment</NavLink>
       <NavLink to="/createCard">Create Card</NavLink>
       <NavLink to="/profile">Profile</NavLink>
       <NavLink to="/logout">LogOut</NavLink>
