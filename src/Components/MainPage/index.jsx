@@ -34,6 +34,12 @@ export default function MainPage() {
         <Route exact path="/">
           <Profile />
         </Route>
+        <Route exact path="/register">
+          <Register />
+        </Route>
+        <Route exact path="/login">
+          <Login />
+        </Route>
         <Redirect to="/" />
       </Switch>
     </Router>
