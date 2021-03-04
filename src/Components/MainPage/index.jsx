@@ -10,6 +10,7 @@ import Login from '../Login';
 import Register from '../Register';
 // import Profile from '../Profile';
 import Card from '../Card';
+import Payment from '../Payment';
 
 export default function MainPage() {
   const auth = true;
@@ -34,6 +35,9 @@ export default function MainPage() {
       <Switch>
         <Route exact path="/">
           <Card />
+        </Route>
+        <Route exact path="/yourPayment">
+          <Payment />
         </Route>
         <Redirect to="/" />
       </Switch>

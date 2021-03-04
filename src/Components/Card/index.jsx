@@ -5,3 +5,7 @@ export default function Card() {
     <div>
       <form action="">
         <p>Hello</p>
+      </form>
+    </div>
+  );
+}

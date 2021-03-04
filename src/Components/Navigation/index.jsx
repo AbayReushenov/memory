@@ -7,6 +7,7 @@ export default function Navigation() {
     <nav className="navigation">
       <NavLink to="/">Home</NavLink>
       <NavLink to="/yuorCard">Yuor card</NavLink>
+      <NavLink to="/yourPayment">Your Payment</NavLink>
       <NavLink to="/createCard">Create Card</NavLink>
       <NavLink to="/profile">Profile</NavLink>
       <NavLink to="/logout">LogOut</NavLink>
