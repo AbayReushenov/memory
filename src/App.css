@@ -5,7 +5,7 @@
   height: 100vh;
   overflow: hidden;
   display: grid;
-  grid-template-rows: repeat(5, 20%);
+  grid-template-rows: 8% repeat(4, 23%);
   grid-template-columns: repeat(5, 20%);
   grid-template-areas: 
   'navigation navigation navigation navigation navigation'
