@@ -8,7 +8,7 @@ import {
 import Navigation from '../Navigation';
 import Login from '../Login';
 import Register from '../Register';
-// import Profile from '../Profile';
+import Profile from '../Profile';
 import Card from '../Card';
 import Payment from '../Payment';
 
@@ -38,6 +38,15 @@ export default function MainPage() {
         </Route>
         <Route exact path="/yourPayment">
           <Payment />
+        </Route>
+        <Route exact path="/yourProfile">
+          <Profile />
+        </Route>
+        <Route exact path="/register">
+          <Register />
+        </Route>
+        <Route exact path="/login">
+          <Login />
         </Route>
         <Redirect to="/" />
       </Switch>
