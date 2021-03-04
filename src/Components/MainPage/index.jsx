@@ -1,13 +1,18 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 import Navigation from '../Navigation';
 import Login from '../Login';
 import Register from '../Register';
 import Profile from '../Profile';
 
 export default function MainPage() {
-  const auth = false;
-  if (auth) {
+  const auth = true;
+  if (!auth) {
     return (
       <Router>
         <Switch>
@@ -17,7 +22,7 @@ export default function MainPage() {
           <Route exact path="/register">
             <Register />
           </Route>
-          <Redirect to='/'/>
+          <Redirect to="/" />
         </Switch>
       </Router>
     );

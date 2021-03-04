@@ -1,9 +1,6 @@
-import React from 'react'
+import React from 'react';
+import './styles.css';
 
 export default function Profile() {
-  return (
-    <div>
-      
-    </div>
-  )
+  return <div className="profile">Profile</div>;
 }
