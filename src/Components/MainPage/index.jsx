@@ -9,12 +9,9 @@ import Navigation from '../Navigation';
 import Login from '../Login';
 import Register from '../Register';
 import Profile from '../Profile';
-<<<<<<< HEAD
 import CreateCardForm from '../CreateCardForm';
-=======
 import Card from '../Card';
 import Payment from '../Payment';
->>>>>>> card
 
 export default function MainPage() {
   const auth = true;
