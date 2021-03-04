@@ -1,16 +1,11 @@
-<<<<<<< HEAD
-import React, { useEffect } from 'react';
-=======
 import React from 'react';
 import './styles.css';
->>>>>>> 0512486a1e72ce07c88637200df055136763469e
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
 import Navigation from '../Navigation';
 import Login from '../Login';
 import Register from '../Register';
@@ -18,8 +13,6 @@ import Profile from '../Profile';
 import CreateCardForm from '../CreateCardForm';
 import Card from '../Card';
 import Payment from '../Payment';
-import firebase from '../../firebase/firebase';
-import { signIn } from '../../redux/actionCreators/authAction';
 
 export default function MainPage() {
   const auth = false;
