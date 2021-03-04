@@ -1,11 +1,15 @@
 import React from 'react';
+import firebase from 'firebase';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import firebase from '../../firebase/firebase';
+import { signOut } from '../../redux/actionCreators/authAction';
 
 export default function Profile() {
   const history = useHistory();
+  const dispatch = useDispatch();
   const logOut = async () => {
     await firebase.auth().signOut().then(() => history.push('/'));
+    dispatch(signOut());
     history.push('/');
   };
 

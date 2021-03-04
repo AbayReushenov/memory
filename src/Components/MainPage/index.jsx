@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Navigation from '../Navigation';
 import Login from '../Login';
 import Register from '../Register';
@@ -13,22 +13,10 @@ import Profile from '../Profile';
 import CreateCardForm from '../CreateCardForm';
 import Card from '../Card';
 import Payment from '../Payment';
-import firebase from '../../firebase/firebase';
-import { signIn } from '../../redux/actionCreators/authAction';
 
 export default function MainPage() {
   const auth = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        console.log('user alive', user);
-        dispatch(signIn(user));
-      }
-    });
-  }, []);
-
-  if (!auth) {
+  if (!auth.uid) {
     return (
       <Router>
         <Switch>
