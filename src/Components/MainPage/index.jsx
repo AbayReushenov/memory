@@ -1,6 +1,9 @@
 import React from 'react';
 import {
-  BrowserRouter as Router, Switch, Route, Redirect,
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
 } from 'react-router-dom';
 import Navigation from '../Navigation';
 import Login from '../Login';
@@ -9,8 +12,8 @@ import Register from '../Register';
 import Card from '../Card';
 
 export default function MainPage() {
-  const auth = false;
-  if (auth) {
+  const auth = true;
+  if (!auth) {
     return (
       <Router>
         <Switch>
