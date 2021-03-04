@@ -1,3 +1,16 @@
 .createCardForm {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: flex-start;
   grid-area: content;
 }
+
+.createCardForm__input {
+  margin: 5px 0 5px 0;
+  padding: 0;
+  width: 250px;
+}
+

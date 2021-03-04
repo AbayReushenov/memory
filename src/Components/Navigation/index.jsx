@@ -5,6 +5,9 @@ import './styles.css';
 export default function Navigation() {
   return (
     <nav className="navigation">
+      Navigation
+      <NavLink to="/register">Регистрация</NavLink>
+      <NavLink to="/login">Авторизация</NavLink>
       <NavLink to="/">Home</NavLink>
       <NavLink to="/yuorCard">Yuor card</NavLink>
       <NavLink to="/createCard">Create Card</NavLink>
