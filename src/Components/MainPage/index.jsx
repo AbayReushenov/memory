@@ -9,6 +9,7 @@ import Navigation from '../Navigation';
 import Login from '../Login';
 import Register from '../Register';
 import Profile from '../Profile';
+import CreateCardForm from '../CreateCardForm';
 
 export default function MainPage() {
   const auth = true;
@@ -33,6 +34,9 @@ export default function MainPage() {
       <Switch>
         <Route exact path="/">
           <Profile />
+        </Route>
+        <Route exact path="/createCard">
+          <CreateCardForm />
         </Route>
         <Redirect to="/" />
       </Switch>
