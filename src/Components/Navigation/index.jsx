@@ -5,15 +5,42 @@ import './styles.css';
 export default function Navigation() {
   return (
     <nav className="navigation">
-      Navigation
-      <NavLink to="/register">Регистрация</NavLink>
-      <NavLink to="/login">Авторизация</NavLink>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/yuorCard">Yuor card</NavLink>
-      <NavLink to="/yourPayment">Your Payment</NavLink>
-      <NavLink to="/createCard">Create Card</NavLink>
-      <NavLink to="/profile">Profile</NavLink>
-      <NavLink to="/logout">LogOut</NavLink>
+      <NavLink
+        activeClassName="navigation_link_active"
+        className="navigation_link"
+        exact
+        to="/"
+      >
+        Главная
+      </NavLink>
+      <NavLink
+        activeClassName="navigation_link_active"
+        className="navigation_link"
+        to="/yuorCard"
+      >
+        Ваши Обьявления
+      </NavLink>
+      <NavLink
+        activeClassName="navigation_link_active"
+        className="navigation_link"
+        to="/yourPayment"
+      >
+        Пополнить кошелек
+      </NavLink>
+      <NavLink
+        activeClassName="navigation_link_active"
+        className="navigation_link"
+        to="/createCard"
+      >
+        Создать Запрос о помощи
+      </NavLink>
+      <NavLink
+        activeClassName="navigation_link_active"
+        className="navigation_link"
+        to="/profile"
+      >
+        Профиль
+      </NavLink>
     </nav>
   );
 }

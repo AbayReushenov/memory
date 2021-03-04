@@ -1,3 +1,20 @@
 .navigation {
+  margin: 0;
+  padding: 3px 10px 3px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #cdd9bd;
   grid-area: navigation;
+}
+
+.navigation_link {
+  margin: 0;
+  text-decoration: none;
+  color: #799fb7;
+}
+
+.navigation_link_active {
+  margin: 0;
+  border-bottom: 1px solid #3e601b;
 }
