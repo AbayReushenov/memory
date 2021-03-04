@@ -1,12 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import './styles.css';
 
 export default function Navigation() {
   return (
     <nav className="navigation">
       Navigation
-      <Link to="/register">Регистрация</Link>
-      <Link to="/login">Авторизация</Link>
+      <NavLink to="/register">Регистрация</NavLink>
+      <NavLink to="/login">Авторизация</NavLink>
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="/yuorCard">Yuor card</NavLink>
+      <NavLink to="/createCard">Create Card</NavLink>
+      <NavLink to="/profile">Profile</NavLink>
+      <NavLink to="/logout">LogOut</NavLink>
     </nav>
   );
 }
