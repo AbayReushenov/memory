@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css';
+import './styles.css';
 
 export default function PaymentForm() {
   const [number, setNumber] = useState('');
@@ -15,17 +16,18 @@ export default function PaymentForm() {
   }
 
   return (
-    <div id="PaymentForm">
+    <div id="PaymentForm" className="payment">
       <Cards
         cvc={cvc}
         expiry={expiry}
         focused={focus}
-        fuulname={fullname}
+        name={fullname}
         number={number}
       />
-      <form onSubmit={handleSubmitInvait}>
+      <form onSubmit={handleSubmitInvait} className="payment__form">
         <input
           type="tel"
+          className="payment__input"
           name="number"
           placeholder="Card Number"
           value={number}
@@ -34,6 +36,7 @@ export default function PaymentForm() {
         />
         <input
           type="text"
+          className="payment__input"
           name="fullname"
           placeholder="Full name"
           value={fullname}
@@ -42,6 +45,7 @@ export default function PaymentForm() {
         />
         <input
           type="text"
+          className="payment__input"
           name="espiry"
           placeholder="MM/YY Expiry"
           value={expiry}
@@ -50,6 +54,7 @@ export default function PaymentForm() {
         />
         <input
           type="tel"
+          className="payment__input"
           name="cvc"
           placeholder="CVC"
           value={cvc}
@@ -58,13 +63,16 @@ export default function PaymentForm() {
         />
         <input
           type="number"
+          className="payment__input"
           name="money"
           placeholder="Сумма"
           value={money}
           onChange={(e) => setMoney(e.target.value)}
           onFocus={(e) => setFocus(e.target.name)}
         />
-        <button type="submit">Send</button>
+        <button type="submit" className="payment__btn_send">
+          Send
+        </button>
       </form>
     </div>
   );

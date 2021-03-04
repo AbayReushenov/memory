@@ -7,22 +7,25 @@ export default function CreateCardForm() {
   const [coordinate, setCoordinate] = useState(['55.827803', '37.293227']);
 
   const handlerClickCheckAdres = async (adres) => {
-    const url = `https://geocode-maps.yandex.ru/1.x/?geocode=${adres}&apikey=6321111e-95db-480c-9b0a-002b9b89e86c&format=json`;
-    const result = await fetch(url);
-    const a = await result.json();
-    console.log(a);
-
-    setLocation(a.response.GeoObjectCollection.featureMember);
-    console.log(coordinate);
+    if (adres !== '') {
+      const url = `https://geocode-maps.yandex.ru/1.x/?geocode=${adres}&apikey=6321111e-95db-480c-9b0a-002b9b89e86c&format=json`;
+      const result = await fetch(url);
+      const a = await result.json();
+      setLocation(a.response.GeoObjectCollection.featureMember);
+    } else {
+      setLocation([]);
+    }
   };
 
   return (
     <form className="createCardForm">
-      <h2>Создадим запрос о Помощи Близким?</h2>
+      <h2 className="createCardForm__title">
+        Создадим запрос о Помощи Близким?
+      </h2>
       <input
         className="createCardForm__input"
         type="text"
-        placeholder="Заголовок=Призыв"
+        placeholder="Заголовок"
         name="title"
       />
       <input
@@ -31,17 +34,18 @@ export default function CreateCardForm() {
         placeholder="описание"
         name="subtitle"
       />
-      <div className="serach_-location">
-        <input
-          type="text"
-          className="createCardForm__input"
-          onChange={(e) => {
-            handlerClickCheckAdres(e.target.value);
-          }}
-          placeholder="адрес"
-          name="location"
-        />
+      <input
+        type="text"
+        className="createCardForm__input"
+        onChange={(e) => {
+          handlerClickCheckAdres(e.target.value);
+        }}
+        placeholder="адрес"
+        name="location"
+      />
+      {location.length > 1 && (
         <select
+          className="city__chouse"
           name="location__chouse"
           onChange={(e) => {
             setCoordinate(e.target.value.split(' ').reverse());
@@ -57,9 +61,8 @@ export default function CreateCardForm() {
             </option>
           ))}
         </select>
-      </div>
+      )}
       <YandexMaps coordinate={coordinate} />
-      <button type="button">Сброс</button>
       <button type="submit">Отправить</button>
     </form>
   );
