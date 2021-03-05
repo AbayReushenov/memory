@@ -2,13 +2,10 @@ import React from 'react';
 import firebase from 'firebase';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-// import { signIn, signOut } from '../../redux/actionCreators/authAction';
 
 export default function Login() {
   const { register, handleSubmit, errors } = useForm();
   const history = useHistory();
-  // const dispatch = useDispatch();
 
   const onSubmit = async (data) => {
     console.log('submit');
