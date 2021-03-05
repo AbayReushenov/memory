@@ -2,8 +2,6 @@ import React from 'react';
 import { YMaps, Map, Placemark } from 'react-yandex-maps';
 
 export default function YandexMap(coordinate) {
-  console.log(coordinate);
-
   return (
     <YMaps>
       <Map state={{ center: coordinate.coordinate, zoom: 10 }}>
