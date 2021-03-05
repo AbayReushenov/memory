@@ -1,9 +1,10 @@
 import * as TYPES from '../types';
 
 function authReducer(auth = {}, action) {
+  console.log('reducer auth', auth);
   switch (action.type) {
     case TYPES.SIGN_IN:
-      return { ...auth, uid: action.payload };
+      return {...auth, uid: action.payload} ;
 
     case TYPES.SIGN_OUT:
       return {};

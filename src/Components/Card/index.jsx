@@ -1,12 +1,11 @@
 import React from 'react';
 
 export default function Card({ item, index }) {
+  
   return (
     <li>
-      <p>
-        Заявка №
-        {index}
-      </p>
+      asdsa
+      <p>Заявка №{index}</p>
       <p>
         E-mail:
         {item.email}
@@ -15,16 +14,14 @@ export default function Card({ item, index }) {
         Название:
         {item.title}
       </p>
-      <p>
-        
-      </p>
-    Описание: {item.subtitle} <br />
-    Локация: {item.location} <br />
-    Сумма : {item.money}руб.<br />
-    Оплата: {item.payon ? "Да" : "Нет"} <br />
-    Заявка принята: {item.inviteAccepted ? "Да" : "Нет"} <br />
+      <p></p>
+      Описание: {item.subtitle} <br />
+      Локация: {item.location} <br />
+      Сумма : {item.money}руб.
+      <br />
+      Оплата: {item.payon ? 'Да' : 'Нет'} <br />
+      Заявка принята: {item.inviteAccepted ? 'Да' : 'Нет'} <br />
       <hr />
     </li>
   );
 }
-

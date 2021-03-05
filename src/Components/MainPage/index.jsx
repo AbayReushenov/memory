@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles.css';
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,6 +18,7 @@ import YourCard from '../YourCard';
 
 export default function MainPage() {
   const auth = useSelector((state) => state.auth);
+  console.log('main roou uid', auth.uid);
   if (!auth.uid) {
     return (
       <div className="auth_false">
@@ -40,10 +42,10 @@ export default function MainPage() {
         <Navigation />
         <Switch>
           <Route exact path="/">
-            <Card />
+            <AllCard />
           </Route>
           <Route exact path="/yuorCard">
-            yuorCard
+            <YourCard />
           </Route>
           <Route exact path="/yourPayment">
             <Payment />
