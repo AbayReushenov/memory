@@ -29,18 +29,24 @@ export default function PaymentForm() {
           type="tel"
           className="payment__input"
           name="number"
+          maxLength="16"
           placeholder="Card Number"
+          pattern="(^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$)"
           value={number}
           onChange={(e) => setNumber(e.target.value)}
           onFocus={(e) => setFocus(e.target.name)}
         />
         <input
           type="text"
+          maxLength="24"
           className="payment__input"
           name="fullname"
-          placeholder="Full name"
-          value={fullname}
-          onChange={(e) => setFullname(e.target.value)}
+          placeholder="Name Surname"
+          pattern="(^([A-Za-z]{3, })\s([A-Za-z]{3, })$"
+          // pattern="(^((?:[A-Za-z]+ ?){1,3})$)"
+          // pattern="(?<! )[-a-zA-Z' ]{2,26}"
+          value={fullname.toUpperCase()}
+          onChange={(e) => setFullname(e.target.value.toUpperCase())}
           onFocus={(e) => setFocus(e.target.name)}
         />
         <input
@@ -48,6 +54,7 @@ export default function PaymentForm() {
           className="payment__input"
           name="espiry"
           placeholder="MM/YY Expiry"
+          maxLength="4"
           value={expiry}
           onChange={(e) => setExpiry(e.target.value)}
           onFocus={(e) => setFocus(e.target.name)}
@@ -57,6 +64,7 @@ export default function PaymentForm() {
           className="payment__input"
           name="cvc"
           placeholder="CVC"
+          maxLength="3"
           value={cvc}
           onChange={(e) => setCvc(e.target.value)}
           onFocus={(e) => setFocus(e.target.name)}
@@ -66,6 +74,8 @@ export default function PaymentForm() {
           className="payment__input"
           name="money"
           placeholder="Сумма"
+          min="1"
+          max="599999"
           value={money}
           onChange={(e) => setMoney(e.target.value)}
           onFocus={(e) => setFocus(e.target.name)}
