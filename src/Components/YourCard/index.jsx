@@ -1,15 +1,16 @@
 import React from 'react';
-import base from './fake';
+import { useSelector } from 'react-redux';
 import Card from '../Card';
 
 export default function YourCard() {
-  console.log(base);
-  const yourmail = 'b@b.com';
-  const yourbase = base.filter((el) => el.email === yourmail);
+  const cards = useSelector(state => state.cards);
+  const user = useSelector(state => state.user);
+
+  console.log(cards);
   return (
     <ul>
-      {yourbase.map((el, i) => {
-        return <Card key={el.email} item={el} index={i} />;
+      {cards.filter(el => el.author === user.email).map((el, i) => {
+        return <Card key={el.id} item={el} index={i} />;
       })}
     </ul>
   );

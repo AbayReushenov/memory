@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import './styles.css';
 import Description from './Description';
 import Task from './Task';
+import { useDispatch, useSelector } from 'react-redux';
+import { addCard } from '../../redux/actionCreators/cardsActions'
+import firebase from 'firebase';
 
-export default function index() {
+export default function FormCreateCard() {
+  const history = useHistory();
+  const user = useSelector(state => state.user)
+  const dispatch = useDispatch();
   const [visualityState, setvisualityState] = useState(false);
   // титл обяьвления
   const [titleCard, setTitleCard] = useState('');
@@ -26,9 +33,13 @@ export default function index() {
       price: priceCard,
       inviteUser: [],
       chat: [],
-      status: false
+      status: false,
+      author: user.email
     };
     console.log(data);
+    dispatch(addCard(data));
+    firebase.database().ref('cards/').push(data);
+    history.push('/');
   };
   return (
     <div>
@@ -39,13 +50,13 @@ export default function index() {
           handlerSendCard={handlerSendCard}
         />
       ) : (
-        <Description
-          setTitleCard={setTitleCard}
-          setDescriptionCard={setDescriptionCard}
-          setLocationCard={setLocationCard}
-          setvisualityState={setvisualityState}
-        />
-      )}
+          <Description
+            setTitleCard={setTitleCard}
+            setDescriptionCard={setDescriptionCard}
+            setLocationCard={setLocationCard}
+            setvisualityState={setvisualityState}
+          />
+        )}
     </div>
   );
 }

@@ -1,11 +1,12 @@
 import React from 'react';
-import base from '../YourCard/fake';
+import { useSelector } from 'react-redux';
 import Card from '../Card';
 
 export default function AllCard() {
+  const cards = useSelector(state => state.cards);
   return (
     <ul>
-      {base.length > 0 ? base.map((el, index) => <Card key={index} item={el} index={index + 1} />) : 'Нет заявок'}
+      {cards.length > 0 ? cards.map((el, index) => <Card key={el.id} item={el} index={index + 1} />) : 'Нет заявок'}
     </ul>
   );
 }

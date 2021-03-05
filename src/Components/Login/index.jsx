@@ -4,15 +4,14 @@ import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 
 export default function Login() {
+
   const { register, handleSubmit, errors } = useForm();
   const history = useHistory();
 
   const onSubmit = async (data) => {
     console.log('submit');
     try {
-      const user = await firebase.auth().signInWithEmailAndPassword(data.Email, data.password);
-      console.log(user);
-      // dispatch(signIn(user));
+      await firebase.auth().signInWithEmailAndPassword(data.Email, data.password);
       history.push('/');
     } catch (error) {
       history.push('/login');
@@ -33,8 +32,6 @@ export default function Login() {
 
   const logOut = async () => {
     await firebase.auth().signOut();
-    console.log('logOut');
-    // dispatch(signOut());
     history.push('/login');
   };
 
