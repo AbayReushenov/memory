@@ -4,7 +4,6 @@ export default function Card({ item, index }) {
   
   return (
     <li>
-      asdsa
       <p>Заявка №{index}</p>
       <p>
         E-mail:

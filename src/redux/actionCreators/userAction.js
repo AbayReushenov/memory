@@ -12,3 +12,9 @@ export function signOut() {
     type: TYPES.SIGN_OUT,
   };
 }
+
+// export function addUser() {
+//   return {
+
+//   } 
+// }
