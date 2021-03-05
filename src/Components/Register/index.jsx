@@ -3,7 +3,7 @@ import firebase from 'firebase';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { signIn } from '../../redux/actionCreators/authAction';
+import { signIn } from '../../redux/actionCreators/userAction';
 
 export default function Register() {
   // eslint-disable-next-line no-unused-vars

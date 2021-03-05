@@ -2,7 +2,7 @@ import React from 'react';
 import firebase from 'firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { signOut } from '../../redux/actionCreators/authAction';
+import { signOut } from '../../redux/actionCreators/userAction';
 
 export default function Profile() {
   const user = useSelector(state => state.user)

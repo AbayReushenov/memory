@@ -19,6 +19,6 @@ function userReducer(user = {}, action) {
   }
 }
 
-export function loadUsers 
+// export function loadUsers 
 
 export default userReducer;
