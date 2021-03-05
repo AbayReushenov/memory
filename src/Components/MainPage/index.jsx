@@ -1,11 +1,11 @@
 import React from 'react';
-import './styles.css';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Navigation from '../Navigation';
 import Login from '../Login';
 import Register from '../Register';
@@ -15,8 +15,8 @@ import Card from '../Card';
 import Payment from '../Payment';
 
 export default function MainPage() {
-  const auth = false;
-  if (!auth) {
+  const auth = useSelector((state) => state.auth);
+  if (!auth.uid) {
     return (
       <div className="auth_false">
         <Router>
