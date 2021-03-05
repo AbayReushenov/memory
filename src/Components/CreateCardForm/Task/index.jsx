@@ -15,7 +15,7 @@ export default function Task(props) {
   };
 
   return (
-    <form onSubmit={handleSubmit(handlerSubmitForm)}>
+    <form className="createCardForm" onSubmit={handleSubmit(handlerSubmitForm)}>
       <input
         type="date"
         onChange={(e) => {

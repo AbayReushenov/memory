@@ -1,0 +1,5 @@
+.allCardList {
+  margin: 0;
+  grid-area: content;
+  overflow-y: scroll;
+}

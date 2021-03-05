@@ -14,6 +14,7 @@ export default function DescriptionCard(props) {
         const url = `https://geocode-maps.yandex.ru/1.x/?geocode=${adres}&apikey=6321111e-95db-480c-9b0a-002b9b89e86c&format=json`;
         const result = await fetch(url);
         const a = await result.json();
+        console.log(a);
         setLocation(a.response.GeoObjectCollection.featureMember);
       } else {
         setLocation([]);
@@ -73,12 +74,8 @@ export default function DescriptionCard(props) {
           }}
         >
           {location.map((el, i) => (
-            <option
-              key={i}
-              value={el.GeoObject.Point.pos}
-            >
-              {el.GeoObject.description}
-              {el.GeoObject.name}
+            <option key={i} value={el.GeoObject.Point.pos}>
+              {el.GeoObject.metaDataProperty.GeocoderMetaData.Address.formatted}
             </option>
           ))}
         </select>

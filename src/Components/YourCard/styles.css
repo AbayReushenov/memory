@@ -1,0 +1,5 @@
+.yuorCardList {
+  margin: 0;
+  overflow-y: scroll;
+  grid-area: content;
+}

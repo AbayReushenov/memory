@@ -42,7 +42,7 @@ export default function FormCreateCard() {
     history.push('/');
   };
   return (
-    <div>
+    <div className="createCardForm">
       {visualityState ? (
         <Task
           setdateFinalTask={setdateFinalTask}
@@ -50,13 +50,13 @@ export default function FormCreateCard() {
           handlerSendCard={handlerSendCard}
         />
       ) : (
-          <Description
-            setTitleCard={setTitleCard}
-            setDescriptionCard={setDescriptionCard}
-            setLocationCard={setLocationCard}
-            setvisualityState={setvisualityState}
-          />
-        )}
+        <Description
+          setTitleCard={setTitleCard}
+          setDescriptionCard={setDescriptionCard}
+          setLocationCard={setLocationCard}
+          setvisualityState={setvisualityState}
+        />
+      )}
     </div>
   );
 }
