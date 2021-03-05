@@ -1,6 +1,6 @@
 import * as TYPES from '../types';
 
-function authReducer(user = {}, action) {
+function userReducer(user = {}, action) {
   console.log('reducer', action);
   switch (action.type) {
     case TYPES.SIGN_IN:
@@ -19,4 +19,6 @@ function authReducer(user = {}, action) {
   }
 }
 
-export default authReducer;
+export function loadUsers 
+
+export default userReducer;
