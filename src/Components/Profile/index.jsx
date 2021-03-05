@@ -1,10 +1,11 @@
 import React from 'react';
 import firebase from 'firebase';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { signOut } from '../../redux/actionCreators/authAction';
 
 export default function Profile() {
+  const user = useSelector(state => state.user)
   const history = useHistory();
   const dispatch = useDispatch();
   const logOut = async () => {
@@ -14,8 +15,8 @@ export default function Profile() {
   };
 
   const profile = {
-    name: 'Лев Николаевич Толстой',
-    email: 'karenin@email.com',
+    name: user.name,
+    email: user.email,
     rating: 4.8,
     money: 5000,
   };
@@ -26,9 +27,7 @@ export default function Profile() {
           Имя:
           {profile.name}
         </li>
-        <li>
-          e-mail:
-          {profile.email}
+        <li> e-mail: {profile.email}
         </li>
         <li>
           Рейтинг:

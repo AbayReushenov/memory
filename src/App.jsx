@@ -10,9 +10,7 @@ function App() {
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user.uid) {
-        console.log(user.uid);
-        console.log(signIn);
-        dispatch(signIn(user.uid));
+        dispatch(signIn(user));
       }
     });
   }, []);

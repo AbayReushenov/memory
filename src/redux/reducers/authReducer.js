@@ -1,16 +1,21 @@
 import * as TYPES from '../types';
 
-function authReducer(auth = {}, action) {
-  console.log('reducer auth', auth);
+function authReducer(user = {}, action) {
+  console.log('reducer', action);
   switch (action.type) {
     case TYPES.SIGN_IN:
-      return {...auth, uid: action.payload} ;
+      return {
+        ...user,
+        uid: action.payload.uid,
+        email: action.payload.email,
+        name: action.payload.displayName,
+      };
 
     case TYPES.SIGN_OUT:
       return {};
 
     default:
-      return auth;
+      return user;
   }
 }
 

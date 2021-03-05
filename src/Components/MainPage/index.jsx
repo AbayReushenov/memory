@@ -17,9 +17,8 @@ import Payment from '../Payment';
 import YourCard from '../YourCard';
 
 export default function MainPage() {
-  const auth = useSelector((state) => state.auth);
-  console.log('main roou uid', auth.uid);
-  if (!auth.uid) {
+  const user = useSelector((state) => state.user);
+  if (!user.uid) {
     return (
       <div className="auth_false">
         <Router>

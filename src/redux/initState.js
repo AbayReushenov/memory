@@ -1,4 +1,4 @@
 const initState = {
-  auth: {},
+  user: {},
 };
 export default initState;
