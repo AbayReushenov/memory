@@ -13,7 +13,8 @@ function userReducer(user = {}, action) {
       };
 
     case TYPES.ADD_MONEY:
-      return { ...user, money: Number(action.payload.addMoney) };
+      alert(action.payload.addMoney)
+      return { ...user, money: (user.money + Number(action.payload.addMoney))} ;
 
     case TYPES.SIGN_OUT:
       return {};

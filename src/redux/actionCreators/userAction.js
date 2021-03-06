@@ -13,12 +13,12 @@ export function signOut() {
   };
 }
 
-export function addMoneyUser(user,addMoney) {
-  // alert('!============addMoney', {addMoney});
+export function addMoneyUser(user, addMoney) {
+  alert( addMoney);
+  alert( user.name );
   return {
     type: TYPES.ADD_MONEY,
     payload: {
-      user,
       addMoney,
     },
   };

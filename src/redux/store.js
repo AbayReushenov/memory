@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers/rootReducer';
 import initState from './initState';
 
-const store = createStore(rootReducer, initState, composeWithDevTools(applyMiddleware(thunk)));
+const store = createStore( rootReducer, initState, composeWithDevTools(applyMiddleware(thunk)));
 
 store.subscribe(() => {
   console.log(store.getState());
