@@ -4,7 +4,7 @@ import Card from '../Card';
 import './styles.css';
 
 export default function AllCard() {
-  const cards = useSelector(state => state.cards);
+  const cards = useSelector((state) => state.cards);
   return (
     <ul className="list__card">
       {cards.length > 0

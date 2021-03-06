@@ -9,7 +9,6 @@
   overflow: hidden;
   display: grid;
   background: rgb(235, 233, 233);
-  cursor: move;
   grid-template-rows: repeat(5, 20%);
   grid-template-columns: 10% repeat(4, 22.5%);
   grid-template-areas:

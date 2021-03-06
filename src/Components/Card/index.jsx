@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './styles.css';
 
 export default function Card({ item, index }) {
   return (
-    <li className="card">
+    <Link className="card" to={`/card/${item.id}`}>
       <p className="card_number">Заявка №{index}</p>
       <p className="card_description">
         Название:
@@ -21,6 +22,6 @@ export default function Card({ item, index }) {
         <p className="card_description_text">{item.loaction?.strLoc}</p>
       </p>
       <p className="card_description">Сумма: {item.price} ₽</p>
-    </li>
+    </Link>
   );
 }

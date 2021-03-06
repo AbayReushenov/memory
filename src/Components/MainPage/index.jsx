@@ -15,6 +15,7 @@ import CreateCardForm from '../CreateCardForm';
 import AllCard from '../AllCard';
 import Payment from '../Payment';
 import YourCard from '../YourCard';
+import FullCard from '../FullCard';
 
 export default function MainPage() {
   const user = useSelector((state) => state.user);
@@ -22,7 +23,7 @@ export default function MainPage() {
     return (
       <div className="auth_false auth_false_animated">
         <h1 className="auth_false__main_title">
-          Помни тех кто ушел, <br/> Вспомни о тех кто был...
+          Помни тех кто ушел, <br /> Вспомни о тех кто был...
         </h1>
         <Router>
           <Switch>
@@ -57,6 +58,9 @@ export default function MainPage() {
           </Route>
           <Route exact path="/createCard">
             <CreateCardForm />
+          </Route>
+          <Route exact path="/card/:id">
+            <FullCard />
           </Route>
           <Redirect to="/" />
         </Switch>
