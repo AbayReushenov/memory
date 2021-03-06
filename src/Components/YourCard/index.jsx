@@ -9,7 +9,7 @@ export default function YourCard() {
 
   console.log(cards);
   return (
-    <ul className="yuorCardList">
+    <ul className="list__card">
       {cards
         .filter((el) => el.author === user.email)
         .map((el, i) => {

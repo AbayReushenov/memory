@@ -22,7 +22,7 @@ export default function MainPage() {
     return (
       <div className="auth_false auth_false_animated">
         <h1 className="auth_false__main_title">
-          Помни тех кто ушел, <br></br> Вспомни о тех кто был...
+          Помни тех кто ушел, <br/> Вспомни о тех кто был...
         </h1>
         <Router>
           <Switch>
