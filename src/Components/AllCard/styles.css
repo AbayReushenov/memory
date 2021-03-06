@@ -1,5 +1,12 @@
-.allCardList {
+.list__card {
   margin: 0;
+  padding: 2px;
   grid-area: content;
-  overflow-y: scroll;
+  display: grid;
+  height: 100vh;
+  grid-template-rows: repeat(2, 50%);
+  grid-template-columns: repeat(3, 31%);
+  gap: 2% 2%;
+  /* overflow: hidden; */
+  box-sizing: border-box;
 }

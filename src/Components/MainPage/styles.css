@@ -8,17 +8,17 @@
   height: 100vh;
   overflow: hidden;
   display: grid;
-  background: hsla(0, 0%, 95%, 1);
+  background: rgb(235, 233, 233);
   cursor: move;
-  background-color: #78cde1;
-  grid-template-rows: 8% repeat(4, 23%);
-  grid-template-columns: repeat(5, 20%);
+  grid-template-rows: repeat(5, 20%);
+  grid-template-columns: 10% repeat(4, 22.5%);
   grid-template-areas:
-    'navigation navigation navigation navigation navigation'
-    'content content content content content'
-    'content content content content content'
-    'content content content content content'
-    'content content content content content';
+    'navigation content content content content'
+    'navigation content content content content'
+    'navigation content content content content'
+    'navigation content content content content'
+    'navigation content content content content';
+    
 }
 
 .auth_false {
