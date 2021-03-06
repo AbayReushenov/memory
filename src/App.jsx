@@ -8,8 +8,8 @@ import './App.css';
 
 function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
-    console.log('load card');
     firebase.auth().onAuthStateChanged((user) => {
       if (user.uid) {
         dispatch(signIn(user));

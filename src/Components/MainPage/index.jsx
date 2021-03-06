@@ -20,7 +20,10 @@ export default function MainPage() {
   const user = useSelector((state) => state.user);
   if (!user.uid) {
     return (
-      <div className="auth_false">
+      <div className="auth_false auth_false_animated">
+        <h1 className="auth_false__main_title">
+          Помни тех кто ушел, <br></br> Вспомни о тех кто был...
+        </h1>
         <Router>
           <Switch>
             <Route exact path="/">

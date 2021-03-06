@@ -1,21 +1,16 @@
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
 
 export default function Task(props) {
-  console.log(props);
-  const { register, handleSubmit } = useForm();
-  const [countTask, setcountTask] = useState(['0']);
+  const [countTask, setcountTask] = useState([{ value: '', status: false }]);
 
-  const handlerSubmitForm = (data) => {
-    let task = [];
-    for (let key in data) {
-      task.push({ key: data[key], status: false });
-    }
-    props.handlerSendCard(task);
+  const handlerSubmitForm = (e) => {
+    e.preventDefault();
+    console.log(e.target);
+    props.handlerSendCard(countTask);
   };
 
   return (
-    <form className="createCardForm" onSubmit={handleSubmit(handlerSubmitForm)}>
+    <form className="createCardForm" onSubmit={handlerSubmitForm}>
       <input
         type="date"
         onChange={(e) => {
@@ -36,7 +31,20 @@ export default function Task(props) {
       {countTask.map((el, i) => {
         return (
           <div className="add_task" key={i}>
-            <input type="text" name={`task${i}`} ref={register()} />
+            <input
+              type="text"
+              name={`task${i}`}
+              onChange={(e) => {
+                setcountTask((prev) => {
+                  return prev.map((el, index) => {
+                    if (index === i) {
+                      return { ...el, value: e.target.value };
+                    }
+                    return el;
+                  });
+                });
+              }}
+            />
             {i > 0 && (
               <button
                 type="button"
@@ -50,7 +58,9 @@ export default function Task(props) {
             <button
               type="button"
               onClick={() => {
-                setcountTask((prev) => (prev = [...prev, prev.push()]));
+                setcountTask(
+                  (prev) => (prev = [...prev, { value: '', status: false }]),
+                );
               }}
             >
               +
