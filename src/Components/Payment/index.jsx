@@ -1,22 +1,28 @@
 import React, { useState } from 'react';
+import { useDispatch , useSelector} from 'react-redux';
+import { addMoneyUser } from '../../redux/actionCreators/userAction';
 import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css';
 import './styles.css';
 
 export default function PaymentForm() {
+  const user = useSelector(state => state.user);
+  const dispatch = useDispatch();
   const [number, setNumber] = useState('');
   const [fullname, setFullname] = useState('');
   const [expiry, setExpiry] = useState('');
   const [cvc, setCvc] = useState('');
   const [focus, setFocus] = useState('');
-  const [money, setMoney] = useState('');
+  const [addMoney, setAddMoney] = useState(0);
 
-  function handleSubmitInvait() {
-    alert(money);
-  }
+  function handleSubmitMoney() {
+      dispatch(addMoneyUser(user,addMoney))
+      setAddMoney(0);
+    }
 
   return (
     <div id="PaymentForm" className="payment">
+      { user.uid} {user.name} {addMoney}
       <Cards
         cvc={cvc}
         expiry={expiry}
@@ -24,7 +30,7 @@ export default function PaymentForm() {
         name={fullname}
         number={number}
       />
-      <form onSubmit={handleSubmitInvait} className="payment__form">
+      <form onSubmit={handleSubmitMoney} className="payment__form">
         <input
           type="tel"
           className="payment__input"
@@ -43,8 +49,6 @@ export default function PaymentForm() {
           name="fullname"
           placeholder="Name Surname"
           pattern="(^([A-Za-z]{3, })\s([A-Za-z]{3, })$"
-          // pattern="(^((?:[A-Za-z]+ ?){1,3})$)"
-          // pattern="(?<! )[-a-zA-Z' ]{2,26}"
           value={fullname.toUpperCase()}
           onChange={(e) => setFullname(e.target.value.toUpperCase())}
           onFocus={(e) => setFocus(e.target.name)}
@@ -72,12 +76,12 @@ export default function PaymentForm() {
         <input
           type="number"
           className="payment__input"
-          name="money"
+          name="addMoney"
           placeholder="Сумма"
           min="1"
           max="599999"
-          value={money}
-          onChange={(e) => setMoney(e.target.value)}
+          value={addMoney}
+          onChange={(e) => setAddMoney(e.target.value)}
           onFocus={(e) => setFocus(e.target.name)}
         />
         <button type="submit" className="payment__btn_send">

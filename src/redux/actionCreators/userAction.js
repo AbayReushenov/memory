@@ -13,8 +13,19 @@ export function signOut() {
   };
 }
 
+export function addMoneyUser(user,addMoney) {
+  // alert('!============addMoney', {addMoney});
+  return {
+    type: TYPES.ADD_MONEY,
+    payload: {
+      user,
+      addMoney,
+    },
+  };
+}
+
 // export function addUser() {
 //   return {
 
-//   } 
+//   }
 // }

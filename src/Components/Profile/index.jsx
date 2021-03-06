@@ -18,7 +18,7 @@ export default function Profile() {
     name: user.name,
     email: user.email,
     rating: 4.8,
-    money: 5000,
+    money: user.money,
   };
   return (
     <div className="profile">
