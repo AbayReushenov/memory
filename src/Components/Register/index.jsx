@@ -85,7 +85,7 @@ export default function Register() {
           Войди!
         </Link>
       </p>
-      <button className="form_auth_action_btn" type="submit">
+      <button className="form_auth_action_btn_register_form" type="submit">
         Зарегестрироваться
       </button>
     </form>
