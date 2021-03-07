@@ -19,4 +19,5 @@ export default initState;
 //   amount:
 //   paid:
 //   accepted:
+//   idchat:
 // } 

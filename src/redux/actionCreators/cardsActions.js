@@ -32,9 +32,9 @@ export function setCards(data) {
 export function loadCards() {
   console.log('123123=======>action creator');
   return (dispatch) => {
-    console.log('=======>action creator');
     const result = firebase.database().ref('cards');
     result.on('value', (snapshot) => {
+      console.log('=======>action creator');
       const firebaseData = snapshot.val();
       let setData = [];
       Object.keys(firebaseData).forEach(el => setData.push(firebaseData[el]));

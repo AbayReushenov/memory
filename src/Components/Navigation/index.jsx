@@ -23,6 +23,13 @@ export default function Navigation() {
       <NavLink
         activeClassName="navigation_link_active"
         className="navigation_link"
+        to="/yuorResponds"
+      >
+        Ваши отклики
+      </NavLink>
+      <NavLink
+        activeClassName="navigation_link_active"
+        className="navigation_link"
         to="/yourPayment"
       >
         Пополнить кошелек
