@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch , useSelector} from 'react-redux';
-import { addMoneyUser } from '../../redux/actionCreators/userAction';
+import { addMoneyUserByThunk } from '../../redux/actionCreators/userAction';
 import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css';
 import './styles.css';
@@ -13,11 +13,11 @@ export default function PaymentForm() {
   const [expiry, setExpiry] = useState('');
   const [cvc, setCvc] = useState('');
   const [focus, setFocus] = useState('');
-  const [addMoney, setAddMoney] = useState(0);
+  const [addMoney, setAddMoney] = useState('');
 
   function handleSubmitMoney() {
-      dispatch(addMoneyUser(user,addMoney))
-      setAddMoney(0);
+      dispatch(addMoneyUserByThunk(addMoney))
+      setAddMoney('');
     }
 
   return (

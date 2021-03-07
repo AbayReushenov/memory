@@ -1,4 +1,5 @@
 import * as TYPES from '../types';
+import firebase from 'firebase';
 
 export function signIn(user) {
   return {
@@ -13,9 +14,7 @@ export function signOut() {
   };
 }
 
-export function addMoneyUser(user, addMoney) {
-  alert( addMoney);
-  alert( user.name );
+export function addMoneyUser(addMoney) {
   return {
     type: TYPES.ADD_MONEY,
     payload: {
@@ -23,6 +22,15 @@ export function addMoneyUser(user, addMoney) {
     },
   };
 }
+
+export const addMoneyUserByThunk = ((addMoney)=> async (dispatch) =>{
+  const dbase = firebase.database();
+  await alert(addMoney);
+  await dbase.ref('user/money').set( addMoney );
+  dispatch(addMoneyUser(addMoney));
+  });
+
+
 
 // export function addUser() {
 //   return {
