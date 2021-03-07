@@ -4,6 +4,7 @@ import { addMoneyUserByThunk } from '../../redux/actionCreators/userAction';
 import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css';
 import './styles.css';
+import database from '../../index';
 
 export default function PaymentForm() {
   const user = useSelector(state => state.user);
@@ -16,7 +17,10 @@ export default function PaymentForm() {
   const [addMoney, setAddMoney] = useState('');
 
   function handleSubmitMoney() {
-      dispatch(addMoneyUserByThunk(addMoney))
+    database
+      .ref(`user/${user.uid}`)
+      .update({money: (Number(user.money) + Number(addMoney))});
+      dispatch(addMoneyUserByThunk(user.uid, (Number(user.money) + Number(addMoney))));
       setAddMoney('');
     }
 

@@ -14,41 +14,29 @@ export function signOut() {
   };
 }
 
-export function addMoneyUser(addMoney) {
-  return {
-    type: TYPES.ADD_MONEY,
-    payload: {
-      addMoney,
-    },
-  };
-}
+export const addMoneyUser = (id, money) => ({
+  type: TYPES.ADD_MONEY,
+  money: money,
+});
 
-export const addMoneyUserByThunk = ((addMoney)=> async (/* dispatch */) =>{
-  alert(addMoney)
+export const addMoneyUserByThunk = (id, money) => {
+  alert(id)
+  alert(money)
   const dbase = firebase.database();
-
-  await dbase
-  .ref()
-  .once('value')
-  .then((snapshot) => {
-    const datatata = snapshot.val();
-    alert(datatata)
-    console.log('user ===============>>>>>>>>>', datatata);
-    alert(datatata)
-  })
-  .catch((err) => {
-    console.log('Erroor------------------------->', err);
-  });
-  await alert(addMoney);
-  // await dbase.ref().update( 
-  //   {
-  //     'user/money':addMoney,
-  //   }
-  //    );
-  // await dispatch(addMoneyUser(addMoney));
-  });
-
-
+  return (dispatch) => {
+    alert(' 44444444444')
+    return dbase
+      .ref(`user/${id}`)
+      .update({money: money})
+      .then(() => {
+        alert('Ok');
+        dispatch(addMoneyUser(id, money));
+      })
+      .catch((err=>{
+        alert('Errror !!!', err);
+      }));
+  };
+};
 
 // export function addUser() {
 //   return {

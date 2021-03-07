@@ -26,3 +26,7 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root'),
 );
+
+const database = firebase.database();
+
+export { firebase, database as default };
