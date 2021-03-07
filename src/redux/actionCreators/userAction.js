@@ -23,11 +23,29 @@ export function addMoneyUser(addMoney) {
   };
 }
 
-export const addMoneyUserByThunk = ((addMoney)=> async (dispatch) =>{
+export const addMoneyUserByThunk = ((addMoney)=> async (/* dispatch */) =>{
+  alert(addMoney)
   const dbase = firebase.database();
+
+  await dbase
+  .ref()
+  .once('value')
+  .then((snapshot) => {
+    const datatata = snapshot.val();
+    alert(datatata)
+    console.log('user ===============>>>>>>>>>', datatata);
+    alert(datatata)
+  })
+  .catch((err) => {
+    console.log('Erroor------------------------->', err);
+  });
   await alert(addMoney);
-  await dbase.ref('user/money').set( addMoney );
-  dispatch(addMoneyUser(addMoney));
+  // await dbase.ref().update( 
+  //   {
+  //     'user/money':addMoney,
+  //   }
+  //    );
+  // await dispatch(addMoneyUser(addMoney));
   });
 
 

@@ -31,17 +31,21 @@ export function setCards(data) {
 
 export function loadCards() {
   return (dispatch) => {
-    const result = firebase.database().ref('cards');
-    result.on('value', (snapshot) => {
-      const firebaseData = snapshot.val();
-      console.log('=======>action creator');
-      let setData = [];
-      Object.keys(firebaseData).forEach(el => setData.push(firebaseData[el]));
-      // for (let key in asd) {
-      //   b.push(asd[key])
-      //   console.log(asd[key]);
-      // }
-      dispatch(setCards(setData))
-    })
-  }
+    firebase
+      .database()
+      .ref('cards')
+      .once('value')
+      .then((snapshot) => {
+        const firebaseData = snapshot.val();
+        console.log('=======>action creator');
+        let setData = [];
+        Object.keys(firebaseData).forEach((el) =>
+          setData.push(firebaseData[el])
+        );
+        dispatch(setCards(setData));
+      })
+      .catch((err) => {
+        console.log('Error', err);
+      });
+  };
 }
