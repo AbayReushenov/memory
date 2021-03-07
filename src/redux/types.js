@@ -9,3 +9,4 @@ export const LOAD_CARDS = 'LOAD_CARDS';
 export const CHANGE_MONEY = 'CHANGE_MONEY';
 export const CHANGE_NAME = 'CHANGE_NAME';
 export const CHANGE_RATING = 'CHANGE_RATING';
+export const ADD_MONEY = 'ADD_MONEY';

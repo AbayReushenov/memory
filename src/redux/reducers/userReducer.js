@@ -9,7 +9,11 @@ function userReducer(user = {}, action) {
         uid: action.payload.uid,
         email: action.payload.email,
         name: action.payload.displayName,
+        money: Number(0),
       };
+
+    case TYPES.ADD_MONEY:
+      return { ...user, money: Number(action.payload.addMoney) };
 
     case TYPES.SIGN_OUT:
       return {};
@@ -19,6 +23,6 @@ function userReducer(user = {}, action) {
   }
 }
 
-// export function loadUsers 
+// export function loadUsers
 
 export default userReducer;

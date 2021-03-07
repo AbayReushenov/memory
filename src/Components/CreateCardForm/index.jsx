@@ -39,7 +39,7 @@ export default function FormCreateCard() {
     console.log(data);
     dispatch(addCard(data));
     firebase.database().ref('cards/').push(data);
-    history.push('/');
+    history.push('/yuorCard');
   };
   return (
     <div className="createCardForm">

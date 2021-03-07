@@ -1,0 +1,47 @@
+[debug] [2021-03-06T16:59:37.564Z] ----------------------------------------------------------------------
+[debug] [2021-03-06T16:59:37.566Z] Command:       /usr/local/bin/node /usr/local/bin/firebase init hosting
+[debug] [2021-03-06T16:59:37.566Z] CLI Version:   9.3.0
+[debug] [2021-03-06T16:59:37.566Z] Platform:      darwin
+[debug] [2021-03-06T16:59:37.566Z] Node Version:  v15.6.0
+[debug] [2021-03-06T16:59:37.571Z] Time:          Sat Mar 06 2021 19:59:37 GMT+0300 (Москва, стандартное время)
+[debug] [2021-03-06T16:59:37.571Z] ----------------------------------------------------------------------
+[debug] [2021-03-06T16:59:37.571Z] 
+[debug] [2021-03-06T16:59:37.580Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-03-06T16:59:37.581Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/ivansosnvich/Documents/Project/memory
+
+Before we get started, keep in mind:
+
+  * You are initializing in an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, using memory-92db6. 
+[debug] [2021-03-06T16:59:37.589Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/memory-92db6 [none]
+[debug] [2021-03-06T16:59:38.000Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/memory-92db6 403
+[debug] [2021-03-06T16:59:38.001Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/memory-92db6 {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2021-03-06T16:59:38.002Z] HTTP Error: 403, The caller does not have permission
+[debug] [2021-03-06T16:59:38.004Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at module.exports (/usr/local/lib/node_modules/firebase-tools/lib/responseToError.js:38:12)
+    at Client.doRequest (/usr/local/lib/node_modules/firebase-tools/lib/apiv2.js:227:23)
+    at processTicksAndRejections (node:internal/process/task_queues:94:5)
+    at async Client.request (/usr/local/lib/node_modules/firebase-tools/lib/apiv2.js:93:20)
+    at async Object.getFirebaseProject (/usr/local/lib/node_modules/firebase-tools/lib/management/projects.js:289:21)
+    at async Object.doSetup [as project] (/usr/local/lib/node_modules/firebase-tools/lib/init/features/project.js:77:27)
+    at async init (/usr/local/lib/node_modules/firebase-tools/lib/init/index.js:19:9)
+[error] 
+[error] Error: Failed to get Firebase project memory-92db6. Please make sure the project exists and your account has permission to access it.

@@ -23,16 +23,16 @@ export default function Navigation() {
       <NavLink
         activeClassName="navigation_link_active"
         className="navigation_link"
-        to="/yuorResponds"
+        to="/waitInviteList"
       >
-        Ваши отклики
+        Ждете инвайта
       </NavLink>
       <NavLink
         activeClassName="navigation_link_active"
         className="navigation_link"
-        to="/yourPayment"
+        to="/workList"
       >
-        Пополнить кошелек
+        В работе
       </NavLink>
       <NavLink
         activeClassName="navigation_link_active"

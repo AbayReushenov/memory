@@ -14,7 +14,7 @@ import * as TYPES from '../types';
       return [cards.filter(el => String(el.id) === String(action.payload.id))]
 
       case TYPES.LOAD_CARDS:
-        console.log('TYPES.LOAD_CARDS');
+        console.log('reducer load cars');
       return [ ...action.payload]
 
       default:

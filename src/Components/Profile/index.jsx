@@ -1,15 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import firebase from 'firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { signOut } from '../../redux/actionCreators/userAction';
 
 export default function Profile() {
-  const user = useSelector(state => state.user)
+  const user = useSelector((state) => state.user);
   const history = useHistory();
   const dispatch = useDispatch();
   const logOut = async () => {
-    await firebase.auth().signOut().then(() => history.push('/'));
+    await firebase
+      .auth()
+      .signOut()
+      .then(() => history.push('/'));
     dispatch(signOut());
     history.push('/');
   };
@@ -18,7 +22,7 @@ export default function Profile() {
     name: user.name,
     email: user.email,
     rating: 4.8,
-    money: 5000,
+    money: user.money,
   };
   return (
     <div className="profile">
@@ -27,8 +31,7 @@ export default function Profile() {
           Имя:
           {profile.name}
         </li>
-        <li> e-mail: {profile.email}
-        </li>
+        <li> e-mail: {profile.email}</li>
         <li>
           Рейтинг:
           {profile.rating}
@@ -38,7 +41,12 @@ export default function Profile() {
           {profile.money}
         </li>
       </ul>
-      <button type="button" onClick={logOut}>выйти</button>
+      <Link className="navigation_link" to="/yourPayment">
+        Пополнить кошелек
+      </Link>
+      <button type="button" onClick={logOut}>
+        выйти
+      </button>
     </div>
   );
 }
