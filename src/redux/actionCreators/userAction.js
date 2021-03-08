@@ -38,23 +38,22 @@ export function addMoneyUserThunk(user, money) {
   }
 }
 
-export function addInvite(user) {
+export function addInvite(cardUid) {
+  console.log(cardUid);
   return {
     type: TYPES.ADD_INVITE,
-    payload:  user 
-
-  }
+    payload: cardUid,
+  };
 }
 
 export function addInviteFireBase(user, card) {
-  return (dispatch) => {
+  return async (dispatch) => {
     const update = {}
     const inviteArray = user.invite ?? [];
     console.log('inviteArray',inviteArray);
-    inviteArray.push(card.uid);
-    const data = { ...user, invite: inviteArray }
-    update['users/' + user.uid] = data
-    firebase.database().ref().update(update)
-    dispatch(addInvite(user));
+    const data = { ...user, invite: [...inviteArray, card.uid] };
+    update['users/' + user.uid] = data;
+    await firebase.database().ref().update(update)
+    dispatch(addInvite(card.uid));
   }
 }

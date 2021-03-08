@@ -12,10 +12,9 @@ function userReducer(user = {}, action) {
       return {};
 
     case TYPES.ADD_INVITE: 
-      
-      
       return {
-        ...user, invite: action.payload.invite
+        ...user,
+        invite: [...user.invite ?? [], action.payload],
       };
     
 
