@@ -10,3 +10,5 @@ export const CHANGE_MONEY = 'CHANGE_MONEY';
 export const CHANGE_NAME = 'CHANGE_NAME';
 export const CHANGE_RATING = 'CHANGE_RATING';
 export const ADD_MONEY = 'ADD_MONEY';
+
+export const ADD_INVITE = 'ADD_INVITE';

@@ -24,8 +24,7 @@ export default function Login() {
   const googleAuthorisation = async () => {
     try {
       const googleScenario = new firebase.auth.GoogleAuthProvider();
-      const responce = await firebase.auth().signInWithPopup(googleScenario);
-      console.log(responce);
+      await firebase.auth().signInWithPopup(googleScenario);
       history.push('/');
     } catch (error) {
       console.log(error);

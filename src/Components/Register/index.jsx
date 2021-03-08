@@ -24,12 +24,10 @@ export default function Register() {
         email: data.email,
         rating: 0,
         money: 0,
-        invite: '',
-        work: '',
+        // invite: '',
+        // work: '',
         avatar: '',
       };
-    console.log('register===>', newUser);
-      console.log('register===>', user);
     
     await dataBase.ref('users/' + user.user.uid).set(newUser);
     dispatch(signIn(newUser));
