@@ -59,7 +59,7 @@ export default function MainPage() {
           <Route exact path="/createCard">
             <CreateCardForm />
           </Route>
-          <Route exact path="/card/:id">
+          <Route exact path="/card/:uid">
             <FullCard />
           </Route>
           <Redirect to="/" />

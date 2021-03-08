@@ -1,0 +1,42 @@
+USERS {
+  name: string
+  email: string
+  uid: string
+  rating: number
+  money: number
+  invite: [uid card]
+  work: [uid card]
+  avatarka: data
+}
+
+cards: {
+  title: string
+  description: string
+  task: [{taskTitle, status}]
+  location: string
+  price: number
+  finishData: date
+  author: user uid
+  worker: user uid
+  invite: [user uid]
+  status: (search, work, finish)
+}
+
+методы users: {
+  1. add user
+  2. add money
+  3. add invite (add uid card to array)
+  4. add execution card uid to array
+  5. add avatar data to firebase and redux store
+  6. logout
+}
+
+методы cards : {
+  1. add cards
+  2. add invite user uid to array
+  3. add worker user uid , change status card to work
+  4. add status finish and transfer money to use work uid
+  5. add chat massege {name user, massege, time}
+  6. change task status {task id, status, можно добавить потраченные деньги}
+  7. добовление фото с номером и тайтлом задачи в чате для доков что она выполнена
+}

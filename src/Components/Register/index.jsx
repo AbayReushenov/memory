@@ -12,13 +12,27 @@ export default function Register() {
   const { register, handleSubmit, errors } = useForm();
   const history = useHistory();
   const dispatch = useDispatch();
-
+  const dataBase = firebase.database();
   const onSubmit = async (data) => {
     const user = await firebase
       .auth()
-      .createUserWithEmailAndPassword(data.Email, data.password);
-    console.log('register===>', user.user.uid);
-    dispatch(signIn(user.user.uid));
+      .createUserWithEmailAndPassword(data.email, data.password);
+      const a = data.lastname + ' ' + data.firstname;
+      const newUser = {
+        uid: user.user.uid,
+        name: a,
+        email: data.email,
+        rating: 0,
+        money: 0,
+        invite: '',
+        work: '',
+        avatar: '',
+      };
+    console.log('register===>', newUser);
+      console.log('register===>', user);
+    
+    await dataBase.ref('users/' + user.user.uid).set(newUser);
+    dispatch(signIn(newUser));
     history.push('/');
   };
 
@@ -35,21 +49,21 @@ export default function Register() {
           type="text"
           className="form_auth_input"
           placeholder="First name"
-          name="First name"
+          name="firstname"
           ref={register({ required: true, maxLength: 80 })}
         />
         <input
           type="text"
           className="form_auth_input"
           placeholder="Last name"
-          name="Last name"
+          name="lastname"
           ref={register({ required: true, maxLength: 100 })}
         />
         <input
           type="email"
           className="form_auth_input"
           placeholder="Email"
-          name="Email"
+          name="email"
           ref={register({ required: true, pattern: /^\S+@\S+$/i })}
         />
         <input

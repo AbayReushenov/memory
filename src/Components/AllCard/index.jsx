@@ -11,7 +11,7 @@ export default function AllCard() {
     <ul className="list__card">
       {cards.length > 0
         ? cards.map((el, index) => (
-            <Link className="card" key={el.id} to={`/card/${el.id}`}>
+            <Link className="card" key={el.uid} to={`/card/${el.uid}`}>
               <Card item={el} index={index + 1} />
             </Link>
           ))

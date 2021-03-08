@@ -8,28 +8,32 @@ import './App.css';
 
 function App() {
   const dispatch = useDispatch();
-  const database = firebase.database();
+  const dataBase = firebase.database();
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
-      console.log('user auth check', user);
       if (user?.uid) {
-        database.ref('users').child(user.uid).once('value', (snapshot) => {
-          if (snapshot.exists()) {
-            console.log('проверка наличия в базе', snapshot.val(), 'сам юзер', user);
-            dispatch(signIn(snapshot.val()));
-          } else {
-            const newUser = {
-              name: user.displayName,
-              email: user.email,
-              money: 0,
-              rating: 0,
-              uid: user.uid
+        dataBase
+          .ref('users')
+          .child(user.uid)
+          .once('value', (snapshot) => {
+            if (snapshot.exists()) {
+              dispatch(signIn(snapshot.val()));
+            } else {
+              const newUser = {
+                uid: user.uid,
+                name: user?.displayName,
+                email: user.email,
+                rating: 0,
+                money: 0,
+                invite: '',
+                work: '',
+                avatar: '',
+              };
+              dataBase.ref('users/' + user.uid).set(newUser);
+              dispatch(signIn(newUser));
             }
-            database.ref('users/' + user.uid).set(newUser);
-            dispatch(signIn(newUser));
-          }
-        })
+          });
         dispatch(loadCards());
       }
     })

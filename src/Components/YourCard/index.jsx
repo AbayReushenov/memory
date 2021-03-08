@@ -13,10 +13,10 @@ export default function YourCard() {
   return (
     <ul className="list__card">
       {cards
-        .filter((el) => el.author.uid === user.uid)
+        .filter((el) => el.author === user.uid)
         .map((el, i) => {
-          return(
-          <Link className="card" key={el.id} to={`/card/${el.id}`}>
+          return (
+            <Link className="card" key={el.uid} to={`/card/${el.uid}`}>
             <Card item={el} index={i + 1} />;
           </Link>)
         })}

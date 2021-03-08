@@ -5,7 +5,7 @@ import firebase from 'firebase';
 export function signIn(user) {
   return {
     type: TYPES.SIGN_IN,
-    payload: user,
+    payload: user ,
   };
 }
 
