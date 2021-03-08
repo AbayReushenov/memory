@@ -34,7 +34,7 @@ export default function FormCreateCard() {
       inviteUser: [],
       chat: [],
       status: false,
-      author: user.email
+      author: user
     };
     console.log(data);
     dispatch(addCard(data));

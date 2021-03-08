@@ -1,13 +1,13 @@
-[debug] [2021-03-06T16:59:37.564Z] ----------------------------------------------------------------------
-[debug] [2021-03-06T16:59:37.566Z] Command:       /usr/local/bin/node /usr/local/bin/firebase init hosting
-[debug] [2021-03-06T16:59:37.566Z] CLI Version:   9.3.0
-[debug] [2021-03-06T16:59:37.566Z] Platform:      darwin
-[debug] [2021-03-06T16:59:37.566Z] Node Version:  v15.6.0
-[debug] [2021-03-06T16:59:37.571Z] Time:          Sat Mar 06 2021 19:59:37 GMT+0300 (Москва, стандартное время)
-[debug] [2021-03-06T16:59:37.571Z] ----------------------------------------------------------------------
-[debug] [2021-03-06T16:59:37.571Z] 
-[debug] [2021-03-06T16:59:37.580Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2021-03-06T16:59:37.581Z] > authorizing via signed-in user
+[debug] [2021-03-08T06:16:54.775Z] ----------------------------------------------------------------------
+[debug] [2021-03-08T06:16:54.776Z] Command:       /usr/local/bin/node /usr/local/bin/firebase init
+[debug] [2021-03-08T06:16:54.776Z] CLI Version:   9.3.0
+[debug] [2021-03-08T06:16:54.776Z] Platform:      darwin
+[debug] [2021-03-08T06:16:54.776Z] Node Version:  v15.6.0
+[debug] [2021-03-08T06:16:54.777Z] Time:          Mon Mar 08 2021 09:16:54 GMT+0300 (Москва, стандартное время)
+[debug] [2021-03-08T06:16:54.777Z] ----------------------------------------------------------------------
+[debug] [2021-03-08T06:16:54.780Z] 
+[debug] [2021-03-08T06:16:54.785Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-03-08T06:16:54.786Z] > authorizing via signed-in user
 [info] 
      ######## #### ########  ######## ########     ###     ######  ########
      ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
@@ -31,11 +31,15 @@ Before we get started, keep in mind:
 [info] but for now we'll just set up a default project.
 [info] 
 [info] i  .firebaserc already has a default project, using memory-92db6. 
-[debug] [2021-03-06T16:59:37.589Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/memory-92db6 [none]
-[debug] [2021-03-06T16:59:38.000Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/memory-92db6 403
-[debug] [2021-03-06T16:59:38.001Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/memory-92db6 {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
-[debug] [2021-03-06T16:59:38.002Z] HTTP Error: 403, The caller does not have permission
-[debug] [2021-03-06T16:59:38.004Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+[debug] [2021-03-08T06:16:57.631Z] > refreshing access token with scopes: []
+[debug] [2021-03-08T06:16:57.631Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-03-08T06:16:57.799Z] <<< HTTP RESPONSE 200 {"date":"Mon, 08 Mar 2021 06:16:57 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-08T06:16:57.826Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/memory-92db6 [none]
+[debug] [2021-03-08T06:16:58.120Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/memory-92db6 403
+[debug] [2021-03-08T06:16:58.120Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/memory-92db6 {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2021-03-08T06:16:58.122Z] HTTP Error: 403, The caller does not have permission
+[debug] [2021-03-08T06:16:58.124Z] FirebaseError: HTTP Error: 403, The caller does not have permission
     at module.exports (/usr/local/lib/node_modules/firebase-tools/lib/responseToError.js:38:12)
     at Client.doRequest (/usr/local/lib/node_modules/firebase-tools/lib/apiv2.js:227:23)
     at processTicksAndRejections (node:internal/process/task_queues:94:5)

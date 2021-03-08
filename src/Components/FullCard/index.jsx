@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import './styles.css';
 
 export default function FullCard() {
   // достаем из глобального стейта все карточки для поиска той, которая нам нужна
@@ -12,7 +13,16 @@ export default function FullCard() {
 
   useEffect(() => {
     // ищем в массиве всех карточке по id нашу, и закидываем её в стейт для отоброжения
-    setCard(cards.find((el) => String(el.id) === String(id)))
+    setCard(cards.find((el) => String(el.id) === String(id)));
   });
-  return <div>{card.author}</div>;
+  return (
+    <div className="fullCardInfo">
+      <div className="fullCardInfo__description">
+        <h2 className="fullCardInfo__title">{card.title}</h2>
+        <p className="fullCardInfo__subtitle">{card.description}</p>
+        <p className=''></p>
+      </div>
+      {card.author}
+    </div>
+  );
 }

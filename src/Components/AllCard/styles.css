@@ -3,10 +3,10 @@
   padding: 2px;
   grid-area: content;
   display: grid;
-  height: 100vh;
-  grid-template-rows: repeat(2, 50%);
+  max-height: 100vh;
+  grid-auto-rows: 50%;
   grid-template-columns: repeat(3, 31%);
   gap: 2% 2%;
-  /* overflow: hidden; */
+  overflow-y: scroll;
   box-sizing: border-box;
 }

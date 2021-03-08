@@ -1,19 +1,24 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 import Card from '../Card';
 import './styles.css';
 
 export default function YourCard() {
   const cards = useSelector((state) => state.cards);
   const user = useSelector((state) => state.user);
+ 
 
-  console.log(cards);
   return (
     <ul className="list__card">
       {cards
-        .filter((el) => el.author === user.email)
+        .filter((el) => el.author.uid === user.uid)
         .map((el, i) => {
-          return <Card key={el.id} item={el} index={i} />;
+          return(
+          <Link className="card" key={el.id} to={`/card/${el.id}`}>
+            <Card item={el} index={i + 1} />;
+          </Link>)
         })}
     </ul>
   );

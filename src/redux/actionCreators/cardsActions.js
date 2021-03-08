@@ -36,7 +36,7 @@ export function loadCards() {
       const firebaseData = snapshot.val();
       console.log('=======>action creator');
       let setData = [];
-      Object.keys(firebaseData).forEach(el => setData.push(firebaseData[el]));
+      Object.keys(firebaseData ?? []).forEach(el => setData.push(firebaseData[el]));
       // for (let key in asd) {
       //   b.push(asd[key])
       //   console.log(asd[key]);
