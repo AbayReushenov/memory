@@ -1,17 +1,9 @@
 import * as TYPES from '../types';
 
 function userReducer(user = {}, action) {
-  console.log('reducer', action);
   switch (action.type) {
     case TYPES.SIGN_IN:
-      return {
-        ...user,
-        uid: action.payload.uid,
-        email: action.payload.email,
-        name: action.payload.displayName,
-        money: Number(0),
-      };
-
+      return action.payload
     case TYPES.ADD_MONEY:
       return { ...user, money: Number(action.payload.addMoney) };
 

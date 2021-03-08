@@ -29,7 +29,7 @@ export default function Login() {
       history.push('/');
     } catch (error) {
       console.log(error);
-      history.push('/login');
+      history.push('/login'); 
     }
   };
 
