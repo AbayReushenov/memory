@@ -19,7 +19,7 @@ export default function ChatCasrd(props) {
       if (user.uid === props.card.author) {
         return (
           <ul>
-            {props.card.invite.map((el) => {
+            {props.card.invite?.map((el) => {
               return <li key={el.uid}>{el.name}</li>;
             })}
           </ul>
