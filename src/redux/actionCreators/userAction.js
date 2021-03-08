@@ -39,10 +39,19 @@ export function addMoneyUserThunk(user, money) {
 }
 
 export function addInvite(cardUid) {
-  console.log(cardUid);
   return {
     type: TYPES.ADD_INVITE_FOR_USER,
     payload: cardUid,
+  };
+}
+
+export function addWorkerToUserFireBase(user, card) {
+  return async () => {
+    const update = {};
+    const workerArray = user.worker ?? [];
+    const data = { ...user, worker: [...workerArray, card.uid] };
+    update['users/' + user.uid] = data;
+    await firebase.database().ref().update(update);
   };
 }
 

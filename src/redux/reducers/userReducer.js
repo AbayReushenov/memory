@@ -22,7 +22,12 @@ function userReducer(user = {}, action) {
     case TYPES.REMOVE_INVITE_FOR_USER:
       return {
         ...user,
-        invite: user.invite.filter(el => el !== action.payload),
+        invite: user.invite.filter((el) => el !== action.payload),
+      };
+    case TYPES.ADD_WORKER_FOR_USER:
+      return {
+        ...user,
+        worker: [...user.worker, action.payload],
       };
 
     default:
