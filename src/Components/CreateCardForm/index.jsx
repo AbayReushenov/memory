@@ -38,7 +38,9 @@ export default function FormCreateCard() {
       author: user.uid
     };
     dispatch(addCard(data));
-    firebase.database().ref('cards/').push(data);
+    let updates = {};
+    updates['/cards/' + newCardId] = data;
+    firebase.database().ref().update(updates);
     history.push('/yuorCard');
   };
   return (

@@ -36,8 +36,21 @@ function App() {
           });
         dispatch(loadCards());
       }
-    });
+    })
+    
   }, []);
+  // if (snapshot.existst()) {
+  //   console.log('проверка наличия в базе',snapshot.val());
+  //   dispatch(signIn(snapshot.val()));
+  // } else {
+  //   database.ref('users/' + user.uid).set({
+  //     name:user.displayName,
+  //     email:user.email,
+  //     money:0,
+  //     rating:0,
+  //   })
+  // }
+  // dispatch(signIn(user));
 
   return (
     <div className="App">

@@ -1,5 +1,7 @@
 import * as TYPES from '../types';
+import firebase from 'firebase';
 
+//логирование в редаксе
 export function signIn(user) {
   return {
     type: TYPES.SIGN_IN,
@@ -7,25 +9,31 @@ export function signIn(user) {
   };
 }
 
+//разлогирование в редаксе
 export function signOut() {
   return {
     type: TYPES.SIGN_OUT,
   };
 }
 
-export function addMoneyUser(user,addMoney) {
-  // alert('!============addMoney', {addMoney});
+
+//добавление денег клиенту в редаксе
+export function addMoneyUser(user, money) {
   return {
     type: TYPES.ADD_MONEY,
     payload: {
       user,
-      addMoney,
+      money,
     },
   };
 }
 
-// export function addUser() {
-//   return {
-
-//   }
-// }
+export function addMoneyUserThunk(user, money) {
+  console.log('попытка поплнения', user);
+  return (dispatch) => {
+    dispatch(addMoneyUser(user, money));
+    firebase.database().ref('users/' + user.uid).set({
+      ...user, money: Number(user.money) + Number(money)
+    })
+  }
+}
