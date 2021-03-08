@@ -1,4 +1,4 @@
-.fullCardInfo {
+.cardInfo {
   margin: 10px;
   padding: 0;
   background-color: #fff;
@@ -9,29 +9,4 @@
   grid-template-columns: repeat(4, 25%);
 }
 
-.fullCardInfo_info {
-  margin: 0;
-  padding: 0;
-  border-right: 1px solid black;
-  grid-row: 1 / span 4;
-  grid-column: 1 / span 2;
-}
-.fullCardInfo__description {
-  margin: 0;
-  padding: 0;
-  grid-row: 1;
-  grid-column: 1 / span 2;
-  text-align: center;
-  width: 100%;
-}
-.fullCardInfo__title {
-  margin: 0;
-}
 
-.fullCardInfo__subtitle {
-  margin: 0 0 0 10px;
-  text-align: left;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}

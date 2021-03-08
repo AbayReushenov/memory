@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import ChatCard from './Chat';
+import DescriptionCard from './Description';
+import TaskCard from './Task';
+
 import './styles.css';
 
 export default function FullCard() {
@@ -15,18 +19,10 @@ export default function FullCard() {
     setCard(cards.find((el) => el.uid === String(uid)));
   });
   return (
-    <div className="fullCardInfo">
-      <div className="fullCardInfo_info"></div>
-      <div className="fullCardInfo__description">
-        <h2 className="fullCardInfo__title">{card?.title}</h2>
-        <p className="fullCardInfo_header">Описание просьбы:</p>
-        <p className="fullCardInfo__subtitle">{card?.description}</p>
-        <p className="fullCardInfo_header">Адрес места:</p>
-        <p className="fullCardInfo__subtitle">{card?.loaction?.strLoc}</p>
-        <p className="fullCardInfo__subtitle">
-          Желательно закончить до:{card.finishData}
-        </p>
-      </div>
+    <div className="cardInfo">
+      <DescriptionCard card={card} />
+      <TaskCard card={card} />
+      <ChatCard card={card} />
     </div>
   );
 }

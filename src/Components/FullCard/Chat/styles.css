@@ -1,0 +1,6 @@
+.chat_card {
+  margin: 0;
+  grid-row: 3 / span 4;
+  grid-column: 1 / span 4;
+  background-color: red;
+}

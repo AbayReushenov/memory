@@ -15,7 +15,7 @@ cards: {
   task: [{taskTitle, status}]
   location: string
   price: number
-  finishData: date
+  dateFinalTask: date
   author: user uid
   worker: user uid
   invite: [user uid]
