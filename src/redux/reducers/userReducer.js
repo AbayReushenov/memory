@@ -5,15 +5,15 @@ function userReducer(user = {}, action) {
   switch (action.type) {
     case TYPES.SIGN_IN:
       return {
-        ...user,
         uid: action.payload.uid,
         email: action.payload.email,
-        name: action.payload.displayName,
-        money: Number(0),
+        name: action.payload.name,
+        money: action.payload.money,
+        rating: action.payload.rating,
       };
 
     case TYPES.ADD_MONEY:
-      return { ...user, money: Number(action.payload.addMoney) };
+      return { ...user, money: Number(user.money) + Number(action.payload.money) };
 
     case TYPES.SIGN_OUT:
       return {};
@@ -22,7 +22,5 @@ function userReducer(user = {}, action) {
       return user;
   }
 }
-
-// export function loadUsers
 
 export default userReducer;

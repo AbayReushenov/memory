@@ -10,7 +10,6 @@ export default function FullCard() {
   const { id } = useParams();
   // делаем стейт карточки чтобы при условии что когда мы её найдем в useEffecte наша карточка отрендарилась и отобразила данные
   let [card, setCard] = useState({});
-
   useEffect(() => {
     // ищем в массиве всех карточке по id нашу, и закидываем её в стейт для отоброжения
     setCard(cards.find((el) => String(el.id) === String(id)));
@@ -18,11 +17,10 @@ export default function FullCard() {
   return (
     <div className="fullCardInfo">
       <div className="fullCardInfo__description">
-        <h2 className="fullCardInfo__title">{card.title}</h2>
-        <p className="fullCardInfo__subtitle">{card.description}</p>
-        <p className=''></p>
+        <h2 className="fullCardInfo__title">{card?.title}</h2>
+        <p className="fullCardInfo__subtitle">{card?.description}</p>
+        <p className="">{card?.author?.email}</p>
       </div>
-      {card.author}
     </div>
   );
 }
