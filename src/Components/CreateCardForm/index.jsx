@@ -23,8 +23,9 @@ export default function FormCreateCard() {
   // стоимость задачи
   const [priceCard, setpriceCard] = useState(0);
   const handlerSendCard = (task) => {
+    const newCardId = firebase.database().ref().child('cards').push().key;
     const data = {
-      id: Date.now().toString(),
+      id: newCardId,
       title: titleCard,
       description: descriptionCard,
       loaction: locationCard,
@@ -36,9 +37,11 @@ export default function FormCreateCard() {
       status: false,
       author: user.email
     };
-    console.log(data);
+
     dispatch(addCard(data));
-    firebase.database().ref('cards/').push(data);
+    let updates = {};
+    updates['/cards/' + newCardId] = data;
+    firebase.database().ref().update(updates);
     history.push('/yuorCard');
   };
   return (

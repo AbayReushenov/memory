@@ -21,7 +21,7 @@ export default function Profile() {
   const profile = {
     name: user.name,
     email: user.email,
-    rating: 4.8,
+    rating: user.rating,
     money: user.money,
   };
   return (
