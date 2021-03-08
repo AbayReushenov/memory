@@ -34,7 +34,7 @@ export function loadCards() {
     const result = firebase.database().ref('cards');
     result.on('value', (snapshot) => {
       const firebaseData = snapshot.val();
-      const a = Object.entries(firebaseData).map(el => {
+      const a = Object.entries(firebaseData ?? {}).map(el => {
         return {...el[1], uid: el[0]}
       });
       let setData = [];

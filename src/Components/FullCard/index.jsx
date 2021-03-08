@@ -16,10 +16,16 @@ export default function FullCard() {
   });
   return (
     <div className="fullCardInfo">
+      <div className="fullCardInfo_info"></div>
       <div className="fullCardInfo__description">
         <h2 className="fullCardInfo__title">{card?.title}</h2>
+        <p className="fullCardInfo_header">Описание просьбы:</p>
         <p className="fullCardInfo__subtitle">{card?.description}</p>
-        <p className="">{card?.author?.email}</p>
+        <p className="fullCardInfo_header">Адрес места:</p>
+        <p className="fullCardInfo__subtitle">{card?.loaction?.strLoc}</p>
+        <p className="fullCardInfo__subtitle">
+          Желательно закончить до:{card.finishData}
+        </p>
       </div>
     </div>
   );
