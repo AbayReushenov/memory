@@ -5,7 +5,6 @@ export default function Task(props) {
 
   const handlerSubmitForm = (e) => {
     e.preventDefault();
-    console.log(e.target);
     props.handlerSendCard(countTask);
   };
 
