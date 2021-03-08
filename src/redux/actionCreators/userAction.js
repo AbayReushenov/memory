@@ -41,12 +41,12 @@ export function addMoneyUserThunk(user, money) {
 export function addInvite(cardUid) {
   console.log(cardUid);
   return {
-    type: TYPES.ADD_INVITE,
+    type: TYPES.ADD_INVITE_FOR_USER,
     payload: cardUid,
   };
 }
 
-export function addInviteFireBase(user, card) {
+export function addInviteFireBaseUser(user, card) {
   return async (dispatch) => {
     const update = {}
     const inviteArray = user.invite ?? [];
@@ -57,3 +57,25 @@ export function addInviteFireBase(user, card) {
     dispatch(addInvite(card.uid));
   }
 }
+
+
+export function removeInvite(cardUid) {
+  console.log(cardUid);
+  return {
+    type: TYPES.REMOVE_INVITE_FOR_USER,
+    payload: cardUid,
+  };
+}
+
+export function removeInviteFireBaseUser(user, cardUid) {
+  return async (dispatch) => {
+    const update = {};
+    let inviteArray = user.invite ?? [];
+    inviteArray = inviteArray.filter((el) => el !== cardUid);
+    const data = { ...user, invite: inviteArray };
+    update['users/' + user.uid] = data;
+    await firebase.database().ref().update(update);
+    dispatch(removeInvite(cardUid));
+  };
+}
+
