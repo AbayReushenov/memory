@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import './styles.css';
+import { useHistory } from 'react-router-dom';
 import Description from './Description';
 import Task from './Task';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCard } from '../../redux/actionCreators/cardsActions'
-import firebase from 'firebase';
+import { addCardFireBase } from '../../redux/actionCreators/cardsActions'
 
 export default function FormCreateCard() {
   const history = useHistory();
@@ -23,23 +22,7 @@ export default function FormCreateCard() {
   // стоимость задачи
   const [priceCard, setpriceCard] = useState(0);
   const handlerSendCard = (task) => {
-    const newCardId = firebase.database().ref().child('cards').push().key
-    const data = {
-      title: titleCard,
-      description: descriptionCard,
-      loaction: locationCard,
-      task,
-      dateFinalTask,
-      price: priceCard,
-      inviteUser: [],
-      chat: [],
-      status: 'search',
-      author: user.uid
-    };
-    dispatch(addCard({ ...data, uid: newCardId }));
-    let updates = {};
-    updates['/cards/' + newCardId] = data;
-    firebase.database().ref().update(updates);
+    dispatch(addCardFireBase({ task, titleCard, descriptionCard, locationCard, dateFinalTask, priceCard, user }));
     history.push('/yuorCard');
   };
   return (
