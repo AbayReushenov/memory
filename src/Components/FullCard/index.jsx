@@ -17,9 +17,6 @@ export default function FullCard() {
     // ищем в массиве всех карточке по id нашу, и закидываем её в стейт для отоброжения
     setCard(cards.find((el) => el.uid === String(uid)));
   });
-const handlerInvite = ()=>{
-  dispatch(addInviteFireBase(user,card));
-} 
 
   return (
     <div className="fullCardInfo">
@@ -27,7 +24,6 @@ const handlerInvite = ()=>{
         <h2 className="fullCardInfo__title">{card?.title}</h2>
         <p className="fullCardInfo__subtitle">{card?.description}</p>
         <p className="">{card?.author?.email}</p>
-        <button onClick={handlerInvite}>откликнуться</button>
       </div>
     </div>
   );
