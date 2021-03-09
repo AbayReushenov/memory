@@ -27,7 +27,6 @@ export default function DescriptionCard(props) {
     handlerClickCheckAdres(cardAdress);
   }, [cardAdress]);
 
-
   return (
     <div className="createCardForm">
       <h2 className="createCardForm__title">
@@ -67,14 +66,14 @@ export default function DescriptionCard(props) {
           name="location__chouse"
           onChange={(e) => {
             props.setLocationCard({
-              strLoc: e.target.textContent,
+              strLoc: e.target.selectedOptions[0].innerText,
               arLoc: e.target.value.split(' ').reverse(),
             });
             setCoordinate(e.target.value.split(' ').reverse());
           }}
         >
           {location.map((el, i) => (
-            <option key={i} value={el.GeoObject.Point.pos}>
+            <option key={i} value={el.GeoObject.Point.pos}> 
               {el.GeoObject.metaDataProperty.GeocoderMetaData.Address.formatted}
             </option>
           ))}
