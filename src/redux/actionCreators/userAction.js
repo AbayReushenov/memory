@@ -1,5 +1,6 @@
 import * as TYPES from '../types';
 import firebase from 'firebase';
+import { changeFireBaseCard } from '../actionCreators/cardsActions'
 
 //логирование в редаксе
 export function signIn(user) {
@@ -59,7 +60,7 @@ export function addInviteFireBaseUser(user, card) {
   return async (dispatch) => {
     const update = {}
     const inviteArray = user.invite ?? [];
-    console.log('inviteArray',inviteArray);
+    console.log('inviteArray', inviteArray);
     const data = { ...user, invite: [...inviteArray, card.uid] };
     update['users/' + user.uid] = data;
     await firebase.database().ref().update(update)
@@ -88,3 +89,37 @@ export function removeInviteFireBaseUser(user, cardUid) {
   };
 }
 
+export function transferMoney(card) {
+  console.log('CARD', card);
+  console.log('EXECUTE TRANSFER===========');
+  return async (dispatch) => {
+    let fromUserDb;
+    let toUserDb;
+    await firebase.database()
+      .ref('users')
+      .child(card.author)
+      .once('value', (snapshot) => {
+        if (snapshot.exists()) {
+          console.log('VVAL', snapshot.val());
+          fromUserDb = snapshot.val();
+          console.log('fromUserDb', fromUserDb);
+        }
+      });
+    await firebase.database()
+      .ref('users')
+      .child(card.worker)
+      .once('value', (snapshot) => {
+        if (snapshot.exists()) {
+          toUserDb = snapshot.val();
+        }
+      });
+
+    console.log("FROMUSER", fromUserDb);
+    console.log("TOUSER", toUserDb);
+    if (fromUserDb && toUserDb) {
+      dispatch(addMoneyUserThunk(fromUserDb, -card.price));
+      dispatch(addMoneyUserThunk(toUserDb, card.price));
+      dispatch(changeFireBaseCard(card, { status: 'finish' }));
+    }
+  }
+}
