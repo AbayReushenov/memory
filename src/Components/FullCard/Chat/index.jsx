@@ -1,43 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeFireBaseCard } from '../../../redux/actionCreators/cardsActions';
 import { addWorkerToUserFireBase } from '../../../redux/actionCreators/userAction';
 import firebase from 'firebase';
+import { useCollectionData } from 'react-firebase-hooks/firestore'
 import './styles.css';
 
 export default function ChatCard(props) {
-  const messageDb = firebase.firestore();
   const [value, setValue] = useState('');
-  const [messages, setMessages] = useState([]);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (props.card) {
-      console.log("PROPS INPUT", props.card);
-      if (!props.card.chatId) {
-        const refToChat = messageDb.collection('chats').doc();
-        const refToMessageColl = messageDb.collection('chats').doc(refToChat.id).collection('messages').doc()
-        messageDb.collection('chats').doc(refToChat.id).collection('messages').doc(refToMessageColl.id).set({
-          name: user.name,
-          time: firebase.firestore.FieldValue.serverTimestamp(),
-          message: 'welcome'
-        })
-        dispatch(changeFireBaseCard(props.card, { chatId: refToChat.id }))
-      } else {
-        const mes = [];
-        messageDb.collection('chats').doc(props.card.chatId).collection('messages').get().then((snapshot) => {
-          snapshot.forEach(data => {
-            mes.push(data.data())
-          });
-        });
-        setMessages(mes)
-        console.log('MES', mes);
-        console.log('MESSAGES', messages);
-
-      }
-    }
-  }, [props])
+  const messagesRef = firebase.firestore().collection('chats').doc(props.card.uid)
+  const [messages] = useCollectionData(
+    messagesRef.collection('messages')
+  );
 
   const handleConfimInvite = (userInviter) => {
     dispatch(
@@ -49,12 +25,14 @@ export default function ChatCard(props) {
     dispatch(addWorkerToUserFireBase(user, props.card));
   };
 
-  const handlerClick = () => {
-    messageDb.collection('chats').doc(props.card.chatId).set({
+  const handlerClick = async (e) => {
+    e.preventDefault();
+    await messagesRef.collection('messages').add({
       name: user.name,
       message: value,
-      time: firebase.firestore.FieldValue.serverTimestamp()
+      time: firebase.firestore.FieldValue.serverTimestamp(),
     })
+    setValue('');
   }
 
   switch (props.card.status) {
@@ -86,16 +64,14 @@ export default function ChatCard(props) {
         return <div>
           {value}
           <form>
-            <input onChange={(e) => setValue(e.target.value)} value={value} /><button onClick={handlerClick}>отправить</button>
+            <input onChange={(e) => setValue(e.target.value)} value={value} /><button onClick={(e) => handlerClick(e)}>отправить</button>
           </form>
           <ul>
-            abra
-            {console.log(messages.length)}
+            CHAT:
             {messages?.map(el =>
             < li key={el.time} >
-              console.log(el)
               <p>name:{el.name}</p>
-              <p>time:{el.time}</p>
+              <p>time:{el?.time?.toDate().toLocaleDateString('ru-RU')}</p>
               <p>mess:{el.message}</p>
             </li>
           )}
