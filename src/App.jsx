@@ -12,6 +12,7 @@ function App() {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
+      console.log('USER DATA',user);
       if (user?.uid) {
         dataBase
           .ref('users')
@@ -28,7 +29,7 @@ function App() {
                 money: 0,
                 // invite: '',
                 // work: '',
-                avatar: '',
+                avatar: user.photoURL,
               };
               dataBase.ref('users/' + user.uid).set(newUser);
               dispatch(signIn(newUser));

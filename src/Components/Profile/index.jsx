@@ -23,10 +23,14 @@ export default function Profile() {
     email: user.email,
     rating: user.rating,
     money: user.money,
+    avatar: user.avatar,
   };
   return (
     <div className="profile">
       <ul>
+        <li>
+          <img style={{borderRadius:50}} alt='profile photo' src={profile.avatar}/>
+        </li>
         <li>
           Имя:
           {profile.name}
