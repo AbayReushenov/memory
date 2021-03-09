@@ -15,6 +15,8 @@ import CreateCardForm from '../CreateCardForm';
 import AllCard from '../AllCard';
 import Payment from '../Payment';
 import YourCard from '../YourCard';
+import AwaitInvaitCard from '../AwaitInvaitCard';
+import InWorkYourCard from '../InWorkYourCard'
 import FullCard from '../FullCard';
 import Performers from '../Performers';
 import About from '../About';
@@ -66,6 +68,12 @@ export default function MainPage() {
           </Route>
           <Route exact path="/yourPayment">
             <Payment />
+          </Route>
+          <Route exact path="/waitInviteList">
+            <AwaitInvaitCard />
+          </Route>
+          <Route exact path="/workList">
+            <InWorkYourCard />
           </Route>
           <Route exact path="/profile">
             <Profile />
