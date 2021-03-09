@@ -17,18 +17,7 @@ export default function ChatCard(props) {
     dispatch(addWorkerToUserFireBase(user, props.card));
   };
   switch (props.card.status) {
-    case 'work':
-      console.log('switch work');
-      if (user.uid === props.card.worker || user.uid === props.card.author) {
-        return <h1>chat</h1>;
-      }
-      return <h1>К сожалению мы уже работаем</h1>;
-    case 'finish':
-      if (user.uid === props.card.author) {
-        return <h1>chat</h1>;
-      }
-      return <h1>finish card</h1>;
-    default:
+    case 'search':
       if (user.uid === props.card.author) {
         return (
           <ul>
@@ -50,6 +39,11 @@ export default function ChatCard(props) {
           </ul>
         );
       }
-      return <h1>Тут будет чат</h1>
+      return <h1>Тут будет чат</h1>;
+    default:
+      if (user.uid === props.card.worker || user.uid === props.card.author) {
+        return <h1>chat</h1>;
+      }
+      return <h1>К сожалению мы уже работаем</h1>;
   }
 }

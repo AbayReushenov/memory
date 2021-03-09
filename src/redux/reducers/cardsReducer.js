@@ -15,9 +15,7 @@ function cardsReducer(cards = {}, action) {
       });
 
     case TYPES.DELETE_CARD:
-      return [
-        cards.filter((el) => String(el.uid) === String(action.payload.uid)),
-      ];
+      return cards.filter((el) => String(el.uid) !== String(action.payload));
 
     case TYPES.LOAD_CARDS:
       console.log('reducer load cars');
