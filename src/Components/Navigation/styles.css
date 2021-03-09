@@ -9,18 +9,6 @@
   background-color: #d9efc7;
 }
 
-.navigation_auth {
-  grid-area: navigation;
-  margin: 0;
-  padding: 10px;
-  display: flex;
-  flex-flow: column nowrap;
-  overflow: hidden;
-  align-content: center;
-  justify-content: space-between;
-  background-color: #d9efc7;
-}
-
 .navigation_links {
   margin: 0 40px 0 0;
   flex: 5 1 auto;

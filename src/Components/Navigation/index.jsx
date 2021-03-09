@@ -77,7 +77,7 @@ export default function Navigation(props) {
     );
   }
   return (
-    <nav className="navigation_auth">
+    <nav className="navigation">
       <NavLink
         activeClassName="navigation_link_active"
         className="navigation_link"
