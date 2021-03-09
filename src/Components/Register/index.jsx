@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './styles.css';
 import firebase from 'firebase';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { signIn } from '../../redux/actionCreators/userAction';
+import CloseForm from '../../image/closeForm.png';
 
 export default function Register(props) {
   // eslint-disable-next-line no-unused-vars
@@ -41,19 +40,16 @@ export default function Register(props) {
   };
 
   return (
-    <form
-      className="form_auth_register"
-      onSubmit={handleSubmit(onSubmit, onError)}
-    >
+    <form className="form_auth" onSubmit={handleSubmit(onSubmit, onError)}>
       <button
         className="form_auth_close_btn"
         type="button"
         onClick={handlerCloseForm}
       >
-        X
+        <img src={CloseForm} alt='Кнопка закрытия формы' className="form_auth_close_icons" />
       </button>
-      <h2 className="auth_title_register">Введите данные для регистрации</h2>
-      <div className="form_auth_input_div">
+      <h2 className="form_auth_title">Введите данные для регистрации</h2>
+      <div className="form_auth_user_data">
         <input
           type="text"
           className="form_auth_input"
@@ -102,13 +98,10 @@ export default function Register(props) {
           </option>
         </select>
       </div>
-      <p className="link_register">
-        Есть аккаунт?
-        <Link className="link_register link_register_active_register" to="/">
-          Войди!
-        </Link>
-      </p>
-      <button className="form_auth_action_btn_register_form" type="submit">
+      <button
+        className="form_auth_action_btn form_auth_action_btn_register"
+        type="submit"
+      >
         Зарегестрироваться
       </button>
     </form>
