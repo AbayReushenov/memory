@@ -14,7 +14,7 @@ export default function ChatCard(props) {
     .firestore()
     .collection('chats')
     .doc(props.card.uid);
-  const [messages] = useCollectionData(messagesRef.collection('messages'));
+  const [messages] = useCollectionData(messagesRef.collection('messages').orderBy('time'));
 
   const handleConfimInvite = (userInviter) => {
     dispatch(
