@@ -45,7 +45,7 @@ export default function DescriptionCard(props) {
       <input
         className="createCardForm__input"
         type="text"
-        placeholder="описание"
+        placeholder="Описание"
         onChange={(e) => {
           props.setDescriptionCard(e.target.value);
         }}
@@ -58,7 +58,7 @@ export default function DescriptionCard(props) {
         onChange={(e) => {
           setcardAdress(e.target.value);
         }}
-        placeholder="адрес"
+        placeholder="Адрес"
         name="location"
       />
       {location.length > 1 && (

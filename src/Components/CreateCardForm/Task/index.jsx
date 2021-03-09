@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 export default function Task(props) {
   const [countTask, setcountTask] = useState([{ value: '', status: false }]);
+  const user = useSelector(state => state.user);
+  const [addMoney, setAddMoney] = useState(0);
 
   const handlerSubmitForm = (e) => {
     e.preventDefault();
-    props.handlerSendCard(countTask);
+    if (Number(addMoney) <= Number(user.money)) {
+      props.handlerSendCard(countTask);
+    }
+    return;
   };
-
+  
   return (
     <form className="createCardForm" onSubmit={handlerSubmitForm}>
       <input
@@ -21,10 +27,13 @@ export default function Task(props) {
       />
       <input
         type="number"
+        value={addMoney}
         onChange={(e) => {
+          setAddMoney(e.target.value);
           props.setpriceCard(e.target.value);
         }}
-        placeholder="сумма вознагрождения"
+        min="0"
+        placeholder="Размер вознаграждения"
         name="price"
       />
       {countTask.map((el, i) => {
@@ -68,6 +77,9 @@ export default function Task(props) {
         );
       })}
       <button type="submit">Create</button>
+      {user.money <= addMoney ? (
+        <h2> К сожалению Ваш баланс меньше суммы по данной услуге!</h2>
+      ) : ''}
     </form>
   );
 }
