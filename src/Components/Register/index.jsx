@@ -15,7 +15,7 @@ export default function Register(props) {
   const onSubmit = async (data) => {
     const user = await firebase
       .auth()
-      .createUserWithEmailAndPassword(data.email, data.password);
+      .createUserWithEmailAndPassword(data.email, data.password, data.photoUrl);
     const a = data.lastname + ' ' + data.firstname;
     const newUser = {
       uid: user.user.uid,
@@ -25,11 +25,12 @@ export default function Register(props) {
       money: 0,
       // invite: '',
       // work: '',
-      avatar: '',
+      avatar: data.photoUrl,
     };
 
     await dataBase.ref('users/' + user.user.uid).set(newUser);
     dispatch(signIn(newUser));
+    console.log('newUser.avatar ',newUser.avatar)
     history.push('/');
   };
 
@@ -102,7 +103,7 @@ export default function Register(props) {
         className="form_auth_action_btn form_auth_action_btn_register"
         type="submit"
       >
-        Зарегестрироваться
+        Зарегистрироваться
       </button>
     </form>
   );

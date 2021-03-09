@@ -23,10 +23,15 @@ export default function Profile() {
     email: user.email,
     rating: user.rating,
     money: user.money,
+    avatar: user.avatar,
   };
   return (
     <div className="profile">
       <ul>
+      <li>
+          Аватарка:
+          {profile.avatar}
+        </li>
         <li>
           Имя:
           {profile.name}
