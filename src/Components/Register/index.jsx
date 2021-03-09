@@ -1,13 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './styles.css';
 import firebase from 'firebase';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { signIn } from '../../redux/actionCreators/userAction';
+import CloseForm from '../../image/closeForm.png';
 
-export default function Register() {
+export default function Register(props) {
   // eslint-disable-next-line no-unused-vars
   const { register, handleSubmit, errors } = useForm();
   const history = useHistory();
@@ -17,18 +16,18 @@ export default function Register() {
     const user = await firebase
       .auth()
       .createUserWithEmailAndPassword(data.email, data.password);
-      const a = data.lastname + ' ' + data.firstname;
-      const newUser = {
-        uid: user.user.uid,
-        name: a,
-        email: data.email,
-        rating: 0,
-        money: 0,
-        // invite: '',
-        // work: '',
-        avatar: '',
-      };
-    
+    const a = data.lastname + ' ' + data.firstname;
+    const newUser = {
+      uid: user.user.uid,
+      name: a,
+      email: data.email,
+      rating: 0,
+      money: 0,
+      // invite: '',
+      // work: '',
+      avatar: '',
+    };
+
     await dataBase.ref('users/' + user.user.uid).set(newUser);
     dispatch(signIn(newUser));
     history.push('/');
@@ -36,13 +35,21 @@ export default function Register() {
 
   const onError = (errorss, e) => console.log(errorss, e);
 
+  const handlerCloseForm = () => {
+    props.setviewRegisterForm(false);
+  };
+
   return (
-    <form
-      className="form_auth_register"
-      onSubmit={handleSubmit(onSubmit, onError)}
-    >
-      <h2 className="auth_title_register">Введите данные для регистрации</h2>
-      <div className="form_auth_input_div">
+    <form className="form_auth" onSubmit={handleSubmit(onSubmit, onError)}>
+      <button
+        className="form_auth_close_btn"
+        type="button"
+        onClick={handlerCloseForm}
+      >
+        <img src={CloseForm} alt='Кнопка закрытия формы' className="form_auth_close_icons" />
+      </button>
+      <h2 className="form_auth_title">Введите данные для регистрации</h2>
+      <div className="form_auth_user_data">
         <input
           type="text"
           className="form_auth_input"
@@ -91,13 +98,10 @@ export default function Register() {
           </option>
         </select>
       </div>
-      <p className="link_register">
-        Есть аккаунт?
-        <Link className="link_register link_register_active_register" to="/">
-          Войди!
-        </Link>
-      </p>
-      <button className="form_auth_action_btn_register_form" type="submit">
+      <button
+        className="form_auth_action_btn form_auth_action_btn_register"
+        type="submit"
+      >
         Зарегестрироваться
       </button>
     </form>

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   addInviteFireBaseUser,
   removeInviteFireBaseUser,
+  transferMoney
 } from '../../../redux/actionCreators/userAction';
 import {
   addInviteFireBaseCard,
@@ -26,9 +27,11 @@ export default function DescriptionCard(props) {
       case 'Редактировать Карточку':
         console.log('Редактировать Карточку');
         break;
-      case 'Завершить':
+      case 'Завершить': {
+        dispatch(transferMoney(props.card));
         console.log('Завершить');
         break;
+      }
       case 'Предложить помощь':
         dispatch(addInviteFireBaseUser(user, props.card));
         dispatch(addInviteFireBaseCard(props.card, user));

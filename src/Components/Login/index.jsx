@@ -1,11 +1,11 @@
 import React from 'react';
 import './styles.css';
 import firebase from 'firebase';
-import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
+import CloseForm from '../../image/closeForm.png';
 
-export default function Login() {
+export default function Login(props) {
   const { register, handleSubmit, errors } = useForm();
   const history = useHistory();
 
@@ -28,14 +28,28 @@ export default function Login() {
       history.push('/');
     } catch (error) {
       console.log(error);
-      history.push('/login'); 
+      history.push('/login');
     }
+  };
+  const handlerCloseForm = () => {
+    props.setviewLoginForm(false);
   };
 
   return (
     <form className="form_auth" onSubmit={handleSubmit(onSubmit)}>
-      <h2 className="auth_title">Добро пожаловать</h2>
-      <div className="form_auth_input_div">
+      <button
+        className="form_auth_close_btn"
+        type="button"
+        onClick={handlerCloseForm}
+      >
+        <img
+          src={CloseForm}
+          alt="Кнопка закрытия формы"
+          className="form_auth_close_icons"
+        />
+      </button>
+      <h2 className="form_auth_title">Добро пожаловать</h2>
+      <div className="form_auth_user_data">
         <input
           type="text"
           placeholder="Email"
@@ -52,12 +66,6 @@ export default function Login() {
           ref={register({ required: true, maxLength: 80 })}
         />
       </div>
-      <p className="link_register">
-        Нет аккаунта?{' '}
-        <Link className="link_register link_register_active" to="/register">
-          Зарегестрируйся!
-        </Link>
-      </p>
       <div className="form_auth_action">
         <button
           className="form_auth_action_btn form_auth_action_btn_email"
