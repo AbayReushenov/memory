@@ -19,15 +19,21 @@ export default function DescriptionCard(props) {
 
   const handlerInvitecard = (e) => {
     switch (e.target.textContent) {
-      case 'Delete Card':
+      case 'Удалить Карточку':
         dispatch(deleteCardFireBase(props.card.uid));
         history.push('/yuorCard');
+        break;
+      case 'Редактировать Карточку':
+        console.log('Редактировать Карточку');
+        break;
+      case 'Завершить':
+        console.log('Завершить');
         break;
       case 'Предложить помощь':
         dispatch(addInviteFireBaseUser(user, props.card));
         dispatch(addInviteFireBaseCard(props.card, user));
         break;
-      case 'Отменить предложение':
+      case 'Отменить Предложение':
         dispatch(removeInviteFireBaseUser(user, props.card.uid));
         dispatch(removeInviteFireBaseCard(props.card, user.uid));
         break;
@@ -44,18 +50,61 @@ export default function DescriptionCard(props) {
       <p>Стоимость: {props.card.price}</p>
       <p>Дата завершения:{props.card.dateFinalTask}</p>
       <p>Локация: {props.card.loaction?.strLoc}</p>
-      <button
-        type="button"
-        onClick={(e) => {
-          handlerInvitecard(e);
-        }}
-      >
-        {props.card.author === user.uid
-          ? 'Delete Card'
-          : props.card.invite?.find((el) => el.uid === user.uid)
-          ? 'Отменить предложение'
-          : 'Предложить помощь'}
-      </button>
+      {props.card.author === user.uid && props.card.status === 'search' ? (
+        <button
+          type="button"
+          onClick={(e) => {
+            handlerInvitecard(e);
+          }}
+        >
+          Удалить Карточку
+        </button>
+      ) : (
+        ''
+      )}
+      {props.card.author === user.uid && props.card.status === 'search' ? (
+        <button
+          type="button"
+          onClick={(e) => {
+            handlerInvitecard(e);
+          }}
+        >
+          Редактировать Карточку
+        </button>
+      ) : (
+        ''
+      )}
+      {props.card.author === user.uid && props.card.status === 'work' ? (
+        <button
+          type="button"
+          onClick={(e) => {
+            handlerInvitecard(e);
+          }}
+        >
+          Завершить
+        </button>
+      ) : (
+        ''
+      )}
+      {props.card.invite?.find((el) => el.uid === user.uid) ? (
+        <button
+          type="button"
+          onClick={(e) => {
+            handlerInvitecard(e);
+          }}
+        >
+          Отменить Предложение
+        </button>
+      ) : (
+        <button
+          type="button"
+          onClick={(e) => {
+            handlerInvitecard(e);
+          }}
+        >
+          Предложить помощь
+        </button>
+      )}
     </div>
   );
 }

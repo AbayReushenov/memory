@@ -50,12 +50,6 @@ export default function ChatCard(props) {
           </ul>
         );
       }
-      if (
-        props.card.invite &&
-        props.card.invite.find((el) => el.uid === user.uid)
-      ) {
-        return <h2>Письмо для отмены инвайта</h2>;
-      }
-      return <h2>Письмо для инвайта</h2>;
+      return <h1>Тут будет чат</h1>
   }
 }
