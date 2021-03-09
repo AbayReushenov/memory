@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import Card from '../Card';
 import './styles.css';
@@ -14,10 +13,7 @@ export default function AwaitInvaitCard() {
       {cards
         .filter((el) => user.invite.includes(el.uid))
         .map((el, i) => {
-          return (
-            <Link className="card" key={el.uid} to={`/card/${el.uid}`}>
-            <Card item={el} index={i + 1} />;
-          </Link>)
+          return <Card key={el.uid} item={el} index={i + 1} />;
         })}
     </ul>
   );
