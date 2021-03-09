@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './styles.css';
 import {
   BrowserRouter as Router,
@@ -16,22 +16,36 @@ import AllCard from '../AllCard';
 import Payment from '../Payment';
 import YourCard from '../YourCard';
 import FullCard from '../FullCard';
+import Performers from '../Performers';
+import About from '../About';
+import ProjectInfo from '../ProjectInfo';
 
 export default function MainPage() {
   const user = useSelector((state) => state.user);
+  const [viewLoginForm, setviewLoginForm] = useState(false);
+  const [viewRegisterForm, setviewRegisterForm] = useState(false);
+
   if (!user.uid) {
     return (
       <div className="auth_false auth_false_animated">
-        <h1 className="auth_false__main_title">
-          Помни тех кто ушел, <br /> Вспомни о тех кто был...
-        </h1>
         <Router>
+          <Navigation
+            setviewLoginForm={setviewLoginForm}
+            setviewRegisterForm={setviewRegisterForm}
+          />
+          {viewRegisterForm && (
+            <Register setviewRegisterForm={setviewRegisterForm} />
+          )}
+          {viewLoginForm && <Login setviewLoginForm={setviewLoginForm} />}
           <Switch>
             <Route exact path="/">
-              <Login />
+              <ProjectInfo />
             </Route>
-            <Route exact path="/register">
-              <Register />
+            <Route exact path="/about">
+              <About />
+            </Route>
+            <Route exact path="/performers">
+              <Performers />
             </Route>
             <Redirect to="/" />
           </Switch>

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 
-export default function Login() {
+export default function Login(props) {
   const { register, handleSubmit, errors } = useForm();
   const history = useHistory();
 
@@ -31,9 +31,19 @@ export default function Login() {
       history.push('/login'); 
     }
   };
+    const handlerCloseForm = () => {
+      props.setviewLoginForm(false);
+    };
 
   return (
     <form className="form_auth" onSubmit={handleSubmit(onSubmit)}>
+      <button
+        className="form_auth_close_btn"
+        type="button"
+        onClick={handlerCloseForm}
+      >
+        X
+      </button>
       <h2 className="auth_title">Добро пожаловать</h2>
       <div className="form_auth_input_div">
         <input

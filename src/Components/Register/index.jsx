@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { signIn } from '../../redux/actionCreators/userAction';
 
-export default function Register() {
+export default function Register(props) {
   // eslint-disable-next-line no-unused-vars
   const { register, handleSubmit, errors } = useForm();
   const history = useHistory();
@@ -17,18 +17,18 @@ export default function Register() {
     const user = await firebase
       .auth()
       .createUserWithEmailAndPassword(data.email, data.password);
-      const a = data.lastname + ' ' + data.firstname;
-      const newUser = {
-        uid: user.user.uid,
-        name: a,
-        email: data.email,
-        rating: 0,
-        money: 0,
-        // invite: '',
-        // work: '',
-        avatar: '',
-      };
-    
+    const a = data.lastname + ' ' + data.firstname;
+    const newUser = {
+      uid: user.user.uid,
+      name: a,
+      email: data.email,
+      rating: 0,
+      money: 0,
+      // invite: '',
+      // work: '',
+      avatar: '',
+    };
+
     await dataBase.ref('users/' + user.user.uid).set(newUser);
     dispatch(signIn(newUser));
     history.push('/');
@@ -36,11 +36,22 @@ export default function Register() {
 
   const onError = (errorss, e) => console.log(errorss, e);
 
+  const handlerCloseForm = () => {
+    props.setviewRegisterForm(false);
+  };
+
   return (
     <form
       className="form_auth_register"
       onSubmit={handleSubmit(onSubmit, onError)}
     >
+      <button
+        className="form_auth_close_btn"
+        type="button"
+        onClick={handlerCloseForm}
+      >
+        X
+      </button>
       <h2 className="auth_title_register">Введите данные для регистрации</h2>
       <div className="form_auth_input_div">
         <input
