@@ -86,7 +86,7 @@ export default function DescriptionCard(props) {
       ) : (
         ''
       )}
-      {props.card.invite?.find((el) => el.uid === user.uid ) ? (
+      {props.card.invite?.find((el) => el.uid === user.uid && props.card.status === 'search') ? (
         user.uid !== props.card.author && <button
           type="button"
           onClick={(e) => {
@@ -96,7 +96,7 @@ export default function DescriptionCard(props) {
           Отменить Предложение
         </button>
       ) : (
-        user.uid !== props.card.author && <button
+        user.uid !== props.card.author && props.card.status === 'search' && <button
           type="button"
           onClick={(e) => {
             handlerInvitecard(e);
