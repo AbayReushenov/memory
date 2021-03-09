@@ -65,7 +65,6 @@ export default function ChatCard(props) {
       if (user.uid === props.card.worker || user.uid === props.card.author) {
         return (
           <div className="card_chat">
-            {value}
             <div className="chat_user_action">
               <input
                 className="chat_user_input"

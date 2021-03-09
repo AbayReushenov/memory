@@ -1,14 +1,16 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { changeFireBaseCard } from '../../../redux/actionCreators/cardsActions'
+import { changeFireBaseCard } from '../../../redux/actionCreators/cardsActions';
+import firebase from 'firebase';
+
 import './styles.css';
 
 export default function TaskCard(props) {
+  const messageDb = firebase.firestore();
   const dispatch = useDispatch();
-  const handlerClick = (task, index) => {
-    const card = props.card;
-    console.log('CARDDDDD',card);
-    dispatch(changeFireBaseCard(card, {
+  const handlerClick = (index) => {
+    const taskForChangeStatus = props.card.task[index];
+    dispatch(changeFireBaseCard(props.card, {
       task: props.card.task.map((el, i) => {
         if (i === index) {
           el.status = !el.status
@@ -17,6 +19,12 @@ export default function TaskCard(props) {
         return el
       })
     }));
+
+    messageDb.collection('chats').doc(props.card.uid).collection('messages').add({
+      name: 'ADMIN',
+      time: firebase.firestore.FieldValue.serverTimestamp(),
+      message: `Исполнитель поменял статус задачи ${taskForChangeStatus.value} на ${taskForChangeStatus.status ? 'выполнено' : 'не выполнено'}`
+    })
   }
 
   return (
@@ -31,7 +39,7 @@ export default function TaskCard(props) {
             >
               {i + 1}. {el.value}
               {props.card.status === 'work' ? (
-                <button className="task_card__comleted_btn" onClick={() => { handlerClick(el, i) }}>{el.status?'UnComplete':'Comleted'}</button>
+                <button className="task_card__comleted_btn" onClick={() => { handlerClick(i) }}>{el.status ? 'UnComplete' : 'Comleted'}</button>
               ) : (
                 ''
               )}
