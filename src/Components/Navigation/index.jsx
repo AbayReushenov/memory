@@ -81,6 +81,11 @@ export default function Navigation(props) {
       <NavLink
         activeClassName="navigation_link_active"
         className="navigation_link"
+        onClick={() => {
+          props.setprofileView(() => {
+            return false;
+          });
+        }}
         exact
         to="/"
       >
@@ -89,6 +94,11 @@ export default function Navigation(props) {
       <NavLink
         activeClassName="navigation_link_active"
         className="navigation_link"
+        onClick={() => {
+          props.setprofileView(() => {
+            return false;
+          });
+        }}
         to="/yuorCard"
       >
         Ваши Обьявления
@@ -96,6 +106,11 @@ export default function Navigation(props) {
       <NavLink
         activeClassName="navigation_link_active"
         className="navigation_link"
+        onClick={() => {
+          props.setprofileView(() => {
+            return false;
+          });
+        }}
         to="/waitInviteList"
       >
         Ждете инвайта
@@ -103,6 +118,11 @@ export default function Navigation(props) {
       <NavLink
         activeClassName="navigation_link_active"
         className="navigation_link"
+        onClick={() => {
+          props.setprofileView(() => {
+            return false;
+          });
+        }}
         to="/workList"
       >
         В работе
@@ -110,19 +130,24 @@ export default function Navigation(props) {
       <NavLink
         activeClassName="navigation_link_active"
         className="navigation_link"
+        onClick={() => {
+          props.setprofileView(() => {
+            return false;
+          });
+        }}
         to="/createCard"
       >
         Создать Запрос о помощи
       </NavLink>
       <button
-        type='button'
+        type="button"
         className="navigation_link"
         onClick={() => {
           props.setprofileView((prev) => {
             if (prev === true) {
-              return false
+              return false;
             }
-            return true
+            return true;
           });
         }}
       >

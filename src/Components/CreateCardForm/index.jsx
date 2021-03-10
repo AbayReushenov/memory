@@ -7,14 +7,15 @@ import { addCardFireBase } from '../../redux/actionCreators/cardsActions';
 
 export default function FormCreateCard() {
   const { register, errors, handleSubmit } = useForm();
+  const [userHaveMoney, setuserHaveMoney] = useState(false);
   const [location, setLocation] = useState([]);
-  const [locationValue, setlocationValue] = useState('')
+  const [locationValue, setlocationValue] = useState('');
   const history = useHistory();
   // При вводе пользователя значения в инпут адреса, находим возможные варианты и показываем пользователю для выбора
   const handlerClickCheckAdres = async (userValue) => {
     setlocationValue(() => {
-      return userValue
-    })
+      return userValue;
+    });
     if (userValue !== '') {
       const url = encodeURI(
         `https://geocode-maps.yandex.ru/1.x/?geocode=${userValue}&apikey=6321111e-95db-480c-9b0a-002b9b89e86c&format=json&results=20`,
@@ -27,8 +28,8 @@ export default function FormCreateCard() {
     }
   };
   // получаем стейт полльзователя из стора
-   const user = useSelector((state) => state.user);
-   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   //обрабатываем что пришло с формы после валидации
   const handlerSubmitForm = (formData) => {
     let card = { user };
@@ -43,14 +44,19 @@ export default function FormCreateCard() {
           key === 'cardTask5' ||
           key === 'cardTask6'
         ) {
-          task.push({title: formData[key], status: false});
+          task.push({ title: formData[key], status: false });
         }
         card[key] = formData[key];
       }
     }
-    card['task'] = task
-    dispatch(addCardFireBase(card));
-    history.push('/yuorCard');
+    card['task'] = task;
+    if (user.money < card['price']) {
+      setuserHaveMoney(true);
+    } else {
+      setuserHaveMoney(false);
+      dispatch(addCardFireBase(card));
+      history.push('/yuorCard');
+    }
   };
   return (
     <form className="createCardForm" onSubmit={handleSubmit(handlerSubmitForm)}>
@@ -137,7 +143,8 @@ export default function FormCreateCard() {
           defaultValue={0}
           name="price"
           ref={register({ validate: (value) => value >= 0 })}
-        />
+          />
+          {userHaveMoney && 'Не хватает денег на счете'}
         {/* <YandexMaps coordinate={coordinate} /> */}
       </div>
       <div className="createCardForm_task">

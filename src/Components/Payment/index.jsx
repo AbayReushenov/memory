@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addMoneyUserThunk } from '../../redux/actionCreators/userAction';
 import Cards from 'react-credit-cards';
@@ -6,7 +7,8 @@ import 'react-credit-cards/es/styles-compiled.css';
 import './styles.css';
 
 export default function PaymentForm() {
-  const user = useSelector(state => state.user);
+  const history = useHistory()
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [number, setNumber] = useState('');
   const [fullname, setFullname] = useState('');
@@ -15,15 +17,15 @@ export default function PaymentForm() {
   const [focus, setFocus] = useState('');
   const [addMoney, setAddMoney] = useState(0);
 
-  function handleSubmitMoney() {
-    dispatch(addMoneyUserThunk(user, addMoney))
-    console.log('из компоненты пэймент', user);
+  function handleSubmitMoney(e) {
+    e.preventDefault();
+    dispatch(addMoneyUserThunk(user, addMoney));
     setAddMoney(0);
+    history.goBack();
   }
 
   return (
     <div id="PaymentForm" className="payment">
-      { user.uid} {user.name} {addMoney}
       <Cards
         cvc={cvc}
         expiry={expiry}

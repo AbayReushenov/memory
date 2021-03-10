@@ -1,6 +1,6 @@
 import * as TYPES from '../types';
 import firebase from 'firebase';
-
+import { addMoneyUserThunk } from '../actionCreators/userAction';
 export function addCard(data) {
   return {
     type: TYPES.ADD_CARD,
@@ -65,19 +65,22 @@ export function addCardFireBase(incomingData) {
       author: user.uid,
     };
     dispatch(addCard({ ...data, uid: newCardId }));
+    dispatch(addMoneyUserThunk(user, -price));
     let updates = {};
     updates['/cards/' + newCardId] = data;
     firebase.database().ref().update(updates);
   };
 }
 
-export function deleteCardFireBase(cardUid) {
+export function deleteCardFireBase(user, card) {
   return async (dispatch) => {
     await firebase
       .database()
-      .ref('cards/' + cardUid)
+      .ref('cards/' + card.uid)
       .remove();
-    dispatch(deleteCard(cardUid));
+    dispatch(deleteCard(card.uid));
+    dispatch(addMoneyUserThunk(user, card.price));
+
   };
 }
 export function addInvite(card) {
@@ -122,7 +125,7 @@ export function changeFireBaseCard(card, newData) {
     console.log('card actions new data card', newData);
     const update = {};
     const data = { ...card, ...newData };
-    console.log('DATA',data);
+    console.log('DATA', data);
     update['cards/' + card.uid] = data;
     await firebase.database().ref().update(update);
     dispatch(changeCard(data));
