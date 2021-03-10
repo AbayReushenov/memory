@@ -1,7 +1,7 @@
 .card_chat {
   margin: 0;
-  grid-row: 3 / span 4;
-  grid-column: 1 / span 4;
+  grid-row: 1 / span 4;
+  grid-column: 3 / span 4;
   position: relative;
   box-sizing: border-box;
   overflow: hidden;

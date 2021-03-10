@@ -37,9 +37,9 @@ export default function TaskCard(props) {
                 }`}
               key={el.uid}
             >
-              {i + 1}. {el.value}
+              {i + 1}. {el.title}
               {props.card.status === 'work' ? (
-                <button className="task_card__comleted_btn" onClick={() => { handlerClick(i) }}>{el.status ? 'UnComplete' : 'Comleted'}</button>
+                <button className="task_card__comleted_btn" onClick={() => { handlerClick(i) }}>{el.status ? 'Готово?' : 'Выполнить'}</button>
               ) : (
                 ''
               )}
