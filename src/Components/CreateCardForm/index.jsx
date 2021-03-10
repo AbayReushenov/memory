@@ -133,13 +133,13 @@ export default function FormCreateCard() {
           name="dateFinalTask"
           ref={register({ required: true })}
         />
-        <label htmlFor="priceCard">Сумма вознагрождения исполнителя</label>
+        <label htmlFor="priceCard">Сумма вознаграждения исполнителя</label>
         {errors.price && 'Больше или ровно 0'}
         <input
           id="priceCard"
           type="number"
           className="createCardForm__input"
-          placeholder="сумма вознагрождения"
+          placeholder="сумма вознаграждения"
           defaultValue={0}
           name="price"
           ref={register({ validate: (value) => value >= 0 })}
