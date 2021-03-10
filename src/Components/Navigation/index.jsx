@@ -114,13 +114,20 @@ export default function Navigation(props) {
       >
         Создать Запрос о помощи
       </NavLink>
-      <NavLink
-        activeClassName="navigation_link_active"
+      <button
+        type='button'
         className="navigation_link"
-        to="/profile"
+        onClick={() => {
+          props.setprofileView((prev) => {
+            if (prev === true) {
+              return false
+            }
+            return true
+          });
+        }}
       >
         Профиль
-      </NavLink>
+      </button>
     </nav>
   );
 }

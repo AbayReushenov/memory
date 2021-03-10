@@ -8,9 +8,13 @@ import { addCardFireBase } from '../../redux/actionCreators/cardsActions';
 export default function FormCreateCard() {
   const { register, errors, handleSubmit } = useForm();
   const [location, setLocation] = useState([]);
+  const [locationValue, setlocationValue] = useState('')
   const history = useHistory();
   // При вводе пользователя значения в инпут адреса, находим возможные варианты и показываем пользователю для выбора
   const handlerClickCheckAdres = async (userValue) => {
+    setlocationValue(() => {
+      return userValue
+    })
     if (userValue !== '') {
       const url = encodeURI(
         `https://geocode-maps.yandex.ru/1.x/?geocode=${userValue}&apikey=6321111e-95db-480c-9b0a-002b9b89e86c&format=json&results=20`,
@@ -75,21 +79,26 @@ export default function FormCreateCard() {
           ref={register({ required: true })}
         />
         <label htmlFor="locationCard">Место захоронения</label>
+        {errors.location && 'Данное поле обязательно'}
         <input
           id="locationCard"
           onChange={(e) => {
             handlerClickCheckAdres(e.target.value);
           }}
           type="text"
+          value={locationValue}
           className="createCardForm__input"
           placeholder="Адрес"
+          ref={register({ required: true })}
           name="location"
         />
         {location.length > 1 && (
           <select
             className="createCardForm__input"
             name="location"
-            ref={register({ required: true })}
+            onChange={(e) => {
+              setlocationValue(e.target.selectedOptions[0].textContent);
+            }}
           >
             {location.map((el, i) => (
               <option

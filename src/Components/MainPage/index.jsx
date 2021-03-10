@@ -26,6 +26,7 @@ export default function MainPage() {
   const user = useSelector((state) => state.user);
   const [viewLoginForm, setviewLoginForm] = useState(false);
   const [viewRegisterForm, setviewRegisterForm] = useState(false);
+  const [profileView, setprofileView] = useState(false)
 
   if (!user.uid) {
     return (
@@ -58,7 +59,8 @@ export default function MainPage() {
   return (
     <div className="auth">
       <Router>
-        <Navigation />
+        <Navigation setprofileView={setprofileView} />
+        {profileView && <Profile />}
         <Switch>
           <Route exact path="/">
             <AllCard />
@@ -74,9 +76,6 @@ export default function MainPage() {
           </Route>
           <Route exact path="/workList">
             <InWorkYourCard />
-          </Route>
-          <Route exact path="/profile">
-            <Profile />
           </Route>
           <Route exact path="/createCard">
             <CreateCardForm />

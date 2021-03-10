@@ -36,6 +36,8 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   text-align: center;
+  background: none;
+
 }
 
 .navigation_link_active {

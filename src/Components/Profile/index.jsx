@@ -1,9 +1,13 @@
 import React from 'react';
+import './styles.css';
 import { Link } from 'react-router-dom';
 import firebase from 'firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { signOut, addAvatarUserThunk } from '../../redux/actionCreators/userAction';
+import {
+  signOut,
+  addAvatarUserThunk,
+} from '../../redux/actionCreators/userAction';
 
 export default function Profile() {
   const user = useSelector((state) => state.user);
@@ -26,7 +30,7 @@ export default function Profile() {
     await fileRef.put(file);
     const newAvatarUrl = await fileRef.getDownloadURL();
     console.log('AVATAR', newAvatarUrl);
-    dispatch(addAvatarUserThunk(user, newAvatarUrl ))
+    dispatch(addAvatarUserThunk(user, newAvatarUrl));
   };
 
   const profile = {
@@ -36,32 +40,33 @@ export default function Profile() {
     money: user.money,
     avatar: user.avatar,
   };
-  console.log("PROFILE", profile);
+  console.log('PROFILE', profile);
   return (
     <div className="profile">
-      <ul>
-        <li>
-          <img style={{ borderRadius: 50, width:100, height:100 }} alt='profile photo' src={profile.avatar} />
-            <input type="file" onChange={handlerChange} />
+      <ul className="profile__list">
+        <li className="profile__items profile__items_avatar">
+          <img
+            className="profile_avatar"
+            alt="profile photo"
+            src={profile.avatar}
+          />
+          <input
+            className="profile__items profile__items_add_avatar"
+            type="file"
+            onChange={handlerChange}
+          />
         </li>
-        <li>
-          Имя:
-          {profile.name}
-        </li>
-        <li> e-mail: {profile.email}</li>
-        <li>
-          Рейтинг:
-          {profile.rating}
-        </li>
-        <li>
-          Сумма средств:
-          {profile.money}
+        <li className="profile__items">{profile.name}</li>
+        <li className="profile__items">{profile.email}</li>
+        <li className="profile__items">{profile.rating}</li>
+        <li className="profile__items profile__items_money">
+          {profile.money} Р.
+          <Link className="profile__link_payment" to="/yourPayment">
+            Пополнить кошелек
+          </Link>
         </li>
       </ul>
-      <Link className="navigation_link" to="/yourPayment">
-        Пополнить кошелек
-      </Link>
-      <button type="button" onClick={logOut}>
+      <button className="profile__logOut" type="button" onClick={logOut}>
         выйти
       </button>
     </div>

@@ -7,6 +7,7 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  position: relative;
   display: grid;
   background: rgb(235, 233, 233);
   grid-template-rows: 10% repeat(4, 22.5%);
