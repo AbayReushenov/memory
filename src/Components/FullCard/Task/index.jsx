@@ -23,7 +23,7 @@ export default function TaskCard(props) {
     }));
 
     messageDb.collection('chats').doc(props.card.uid).collection('messages').add({
-      name: 'ADMIN',
+      name: 'Информация',
       time: firebase.firestore.FieldValue.serverTimestamp(),
       message: `Исполнитель поменял статус задачи ${taskForChangeStatus.title} на ${taskForChangeStatus.status ? 'выполнено' : 'не выполнено'}`
     })
