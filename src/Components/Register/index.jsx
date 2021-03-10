@@ -48,7 +48,7 @@ export default function Register(props) {
       >
         <img src={CloseForm} alt='Кнопка закрытия формы' className="form_auth_close_icons" />
       </button>
-      <h2 className="form_auth_title">Введите данные для регистрации</h2>
+      <h2 className="form_auth_title">Введите данные для регистрация</h2>
       <div className="form_auth_user_data">
         <input
           type="text"

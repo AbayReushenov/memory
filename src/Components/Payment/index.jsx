@@ -23,7 +23,7 @@ export default function PaymentForm() {
 
   return (
     <div id="PaymentForm" className="payment">
-      { user.uid} {user.name} {addMoney}
+      {/* { user.uid} {user.name} {addMoney} */}
       <Cards
         cvc={cvc}
         expiry={expiry}

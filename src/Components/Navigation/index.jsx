@@ -91,7 +91,7 @@ export default function Navigation(props) {
         className="navigation_link"
         to="/yuorCard"
       >
-        Ваши Обьявления
+        Ваши ОбЪявления
       </NavLink>
       <NavLink
         activeClassName="navigation_link_active"
