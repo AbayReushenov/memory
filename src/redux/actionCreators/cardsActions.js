@@ -44,23 +44,23 @@ export function addCardFireBase(incomingData) {
   return (dispatch) => {
     const {
       task,
-      titleCard,
-      descriptionCard,
-      locationCard,
+      title,
+      description,
+      location,
       dateFinalTask,
-      priceCard,
+      price,
       user,
     } = incomingData;
     console.log(task);
     const newCardId = firebase.database().ref().child('cards').push().key;
     const data = {
       uid: newCardId,
-      title: titleCard,
-      description: descriptionCard,
-      loaction: locationCard,
+      title,
+      description,
+      location,
       task,
       dateFinalTask,
-      price: priceCard,
+      price,
       status: 'search',
       author: user.uid,
     };
