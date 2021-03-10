@@ -1,31 +1,26 @@
-.task_card {
-  margin: 0;
-  grid-row: 4 / span 6;
-  grid-column: 1 / span 2;
-  box-sizing: border-box;
-  background-color: rgb(214, 212, 98);
+.task_card_list {
+  grid-row: 1 / span 4;
+  grid-column: 1;
   box-sizing: border-box;
   overflow-x: hidden;
-  overflow-y: hidden;
-}
-
-.task_card_list {
+  background: rgb(255, 255, 255);
+  box-shadow: 1px 3px 5px #555555;
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
+  height: 95%;
   box-sizing: border-box;
+  border-radius: 10px;
   display: flex;
-  flex-flow: row wrap;
-  align-content: flex-start;
-  justify-items: center;
+  flex-flow: column wrap;
+  align-content: center;
   justify-content: center;
   position: relative;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .task_card__item {
-  margin: 10px  0 10px 0;
+  margin: 10px 0 10px 0;
   padding: 5px;
   list-style: none;
   width: 80%;
@@ -41,12 +36,13 @@
 
 .task_card__comleted_btn {
   padding: 0;
+  background: none;
 }
 
 .task_card__item_finish {
-  background: linear-gradient(to left, rgb(35, 77, 26),rgb(131, 202, 117));
+  background: linear-gradient(to left, rgb(35, 77, 26), rgb(131, 202, 117));
 }
 
 .task_card__item_inWork {
-  background: linear-gradient(to left, rgb(196, 62, 62),rgb(131, 202, 117));
+  background: linear-gradient(to left, rgb(196, 62, 62), rgb(131, 202, 117));
 }

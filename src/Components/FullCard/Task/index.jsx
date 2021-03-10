@@ -8,6 +8,7 @@ import './styles.css';
 export default function TaskCard(props) {
   const messageDb = firebase.firestore();
   const dispatch = useDispatch();
+
   const handlerClick = (index) => {
     const taskForChangeStatus = props.card.task[index];
     dispatch(changeFireBaseCard(props.card, {
@@ -23,23 +24,22 @@ export default function TaskCard(props) {
     messageDb.collection('chats').doc(props.card.uid).collection('messages').add({
       name: 'ADMIN',
       time: firebase.firestore.FieldValue.serverTimestamp(),
-      message: `Исполнитель поменял статус задачи ${taskForChangeStatus.value} на ${taskForChangeStatus.status ? 'выполнено' : 'не выполнено'}`
+      message: `Исполнитель поменял статус задачи ${taskForChangeStatus.title} на ${taskForChangeStatus.status ? 'выполнено' : 'не выполнено'}`
     })
   }
 
   return (
-    <div className="task_card">
       <ul className="task_card_list">
         {props.card.task?.map((el, i) => {
           return (
             <li
               className={`task_card__item ${el.status ? 'task_card__item_finish' : 'task_card__item_inWork'
                 }`}
-              key={el.uid}
+              key={i}
             >
-              {i + 1}. {el.title}
+              {el.title}
               {props.card.status === 'work' ? (
-                <button className="task_card__comleted_btn" onClick={() => { handlerClick(i) }}>{el.status ? 'Готово?' : 'Выполнить'}</button>
+                <button className="task_card__comleted_btn" onClick={() => { handlerClick(i) }}>{el.status ? 'Готово' : 'Выполнить'}</button>
               ) : (
                 ''
               )}
@@ -47,6 +47,5 @@ export default function TaskCard(props) {
           );
         })}
       </ul>
-    </div>
   );
 }

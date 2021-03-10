@@ -1,10 +1,10 @@
 .description_card {
   position: relative;
   margin: 0;
-  padding: 10px;
-  grid-row: 1 / span 3;
-  grid-column: 1 / span 2;
-  background-color: rgb(214, 212, 98);
+  width: 98%;
+  padding: 0;
+  grid-row: 1 / span 2;
+  grid-column: 2 / span 4;
   overflow: hidden;
   box-sizing: border-box;
   display: flex;
@@ -12,10 +12,18 @@
   align-content: center;
   justify-content: center;
   overflow-y: scroll;
+  background: #fefffe;
+  font-family: Poppins-Regular;
+  color: #555555;
+  line-height: 1.2;
+  letter-spacing: 2px;
+  border-radius: 10px;
 }
 
 .description_card_title {
   margin: 10px 5px 0 10px;
+  width: 100%;
+  text-align: center;
   padding: 0 0 5px;
   position: relative;
   font-family: Poppins-Regular;
@@ -24,20 +32,21 @@
   font-weight: 500;
 }
 .description_card_title::before {
-  width: 150px;
-  border-bottom: 4px solid white;
+  width: 450px;
+  border-bottom: 2px solid rgb(54, 170, 54);
   bottom: 0;
   content: '';
   display: block;
   height: 4px;
   left: 13%;
   position: absolute;
-  transform: translate(-50%, 0);
 }
 
 .description_card_subtitle {
   margin: 10px 5px 0 10px;
   padding: 0 0 5px;
+  width: 100%;
+  text-align: center;
   position: relative;
   font-family: Poppins-Regular;
   font-size: 1.2rem;
@@ -46,20 +55,21 @@
 }
 
 .description_card_subtitle::before {
-  width: 150px;
-  border-bottom: 4px solid white;
+  width: 450px;
+  border-bottom: 2px solid rgb(54, 170, 54);
   bottom: 0;
   content: '';
   display: block;
   height: 4px;
   left: 13%;
   position: absolute;
-  transform: translate(-50%, 0);
 }
 
 .description_card_price {
   margin: 10px 5px 0 10px;
   padding: 0 0 5px;
+  width: 100%;
+  text-align: center;
   position: relative;
   font-family: Poppins-Regular;
   font-size: 1.2rem;
@@ -68,20 +78,21 @@
 }
 
 .description_card_price::before {
-  width: 150px;
-  border-bottom: 4px solid white;
+  width: 450px;
+  border-bottom: 2px solid rgb(54, 170, 54);
   bottom: 0;
   content: '';
   display: block;
   height: 4px;
   left: 13%;
   position: absolute;
-  transform: translate(-50%, 0);
 }
 
 .description_card_finish_date {
   margin: 10px 5px 0 10px;
   padding: 0 0 5px;
+  width: 100%;
+  text-align: center;
   position: relative;
   font-family: Poppins-Regular;
   font-size: 1.2rem;
@@ -90,19 +101,20 @@
 }
 
 .description_card_finish_date::before {
-  width: 150px;
-  border-bottom: 4px solid white;
+  width: 450px;
+  border-bottom: 2px solid rgb(54, 170, 54);
   bottom: 0;
   content: '';
   display: block;
   height: 4px;
   left: 13%;
   position: absolute;
-  transform: translate(-50%, 0);
 }
 .description_card_location {
   margin: 10px 5px 0 10px;
   padding: 0 0 5px;
+  width: 100%;
+  text-align: center;
   position: relative;
   font-family: Poppins-Regular;
   font-size: 1.2rem;
@@ -111,15 +123,14 @@
 }
 
 .description_card_location::before {
-  width: 150px;
-  border-bottom: 4px solid white;
+  width: 450px;
+  border-bottom: 2px solid rgb(54, 170, 54);
   bottom: 0;
   content: '';
   display: block;
   height: 4px;
   left: 13%;
   position: absolute;
-  transform: translate(-50%, 0);
 }
 
 .description_card_action {
@@ -127,7 +138,7 @@
   padding: 0;
   position: absolute;
   top: 0;
-  right: 0;
+  right: 25px;
   display: flex;
   flex-flow: column nowrap;
 }
@@ -138,4 +149,5 @@
   max-width: 100px;
   max-height: 100px;
   overflow: hidden;
+  background: none;
 }
