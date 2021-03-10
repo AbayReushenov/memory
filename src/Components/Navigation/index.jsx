@@ -98,7 +98,7 @@ export default function Navigation(props) {
         className="navigation_link"
         to="/waitInviteList"
       >
-        Ждете инвайта
+        Ждут инвайта
       </NavLink>
       <NavLink
         activeClassName="navigation_link_active"
