@@ -11,6 +11,12 @@ function userReducer(user = {}, action) {
         money: Number(user.money) + Number(action.payload.money),
       };
 
+    case TYPES.ADD_AVATAR:
+      return {
+        ...user,
+        avatar: action.payload.avatarUrl,
+      };
+
     case TYPES.SIGN_OUT:
       return {};
 

@@ -29,6 +29,27 @@ export function addMoneyUser(user, money) {
   };
 }
 
+export function addAvatarUser(user, avatarUrl) {
+  return {
+    type: TYPES.ADD_AVATAR,
+    payload: {
+      user,
+      avatarUrl,
+    },
+  };
+}
+
+export function addAvatarUserThunk(user, avatar) {
+  console.log('попытка изменения аватара', user);
+  return (dispatch) => {
+    dispatch(addAvatarUser(user, avatar));
+    console.log('NEW USER', { ...user, avatar });
+    firebase.database().ref('users/' + user.uid).set({
+      ...user, avatar: avatar
+    })
+  }
+}
+
 export function addMoneyUserThunk(user, money) {
   console.log('попытка поплнения', user);
   return (dispatch) => {
