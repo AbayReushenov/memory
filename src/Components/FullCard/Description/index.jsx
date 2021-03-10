@@ -57,7 +57,7 @@ export default function DescriptionCard(props) {
         Дата завершения:{props.card.dateFinalTask}
       </p>
       <p className="description_card_location">
-        Локация: {props.card.loaction?.strLoc}
+        Локация: {props.card.location}
       </p>
       <div className="description_card_action">
         {props.card.author === user.uid && props.card.status === 'search' ? (

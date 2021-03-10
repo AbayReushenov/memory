@@ -67,19 +67,6 @@ export default function ChatCard(props) {
       if (user.uid === props.card.worker || user.uid === props.card.author) {
         return (
           <div id="card_chat" className="card_chat">
-            <form className="chat_user_action">
-              <input
-                className="chat_user_input"
-                onChange={(e) => setValue(e.target.value)}
-                value={value}
-              />
-              <button
-                className="chat_user_send_msg"
-                onClick={(e) => handlerClick(e)}
-              >
-                отправить
-              </button>
-            </form>
             <ul id="chat_card_list" className="chat_card_list">
               {messages?.map((el) => (
                 <li
@@ -107,6 +94,17 @@ export default function ChatCard(props) {
                 </li>
               ))}
             </ul>
+              <form className="chat_user_action">
+                <input
+                  className="chat_user_input"
+                  onChange={(e) => setValue(e.target.value)}
+                  value={value}
+                />
+                <button
+                  className="chat_user_send_msg"
+                  onClick={(e) => handlerClick(e)}
+                />
+              </form>
           </div>
         );
       }

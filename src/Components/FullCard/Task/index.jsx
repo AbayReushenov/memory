@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { changeFireBaseCard } from '../../../redux/actionCreators/cardsActions';
 import firebase from 'firebase';
@@ -6,9 +6,10 @@ import firebase from 'firebase';
 import './styles.css';
 
 export default function TaskCard(props) {
-  const [images, setImages] = useState(props.card.images ? props.card.images : []);
+  // const [images, setImages] = useState(props.card.images ? props.card.images : []);
   const messageDb = firebase.firestore();
   const dispatch = useDispatch();
+
   const handlerClick = (index) => {
     const taskForChangeStatus = props.card.task[index];
     dispatch(changeFireBaseCard(props.card, {
@@ -24,42 +25,38 @@ export default function TaskCard(props) {
     messageDb.collection('chats').doc(props.card.uid).collection('messages').add({
       name: 'ADMIN',
       time: firebase.firestore.FieldValue.serverTimestamp(),
-      message: `Исполнитель поменял статус задачи ${taskForChangeStatus.value} на ${taskForChangeStatus.status ? 'выполнено' : 'не выполнено'}`
+      message: `Исполнитель поменял статус задачи ${taskForChangeStatus.title} на ${taskForChangeStatus.status ? 'выполнено' : 'не выполнено'}`
     })
   }
 
-  const handlerAddPhoto = async (e) => {
-    const files = e.target.files;
-    const storageRef = firebase.storage().ref();
-    const collectionPhoto = storageRef.child('evidence');
-    const filesRefs = [];
-    for (let i = 0; i < files.length; i++) {
-      const fileRef = collectionPhoto.child(Date.now()+'_'+files[i].name);
-      await fileRef.put(files[i])
-      filesRefs.push(await fileRef.getDownloadURL());
-    }
-    console.log('URLS refs', filesRefs);
+  // const handlerAddPhoto = async (e) => {
+  //   const files = e.target.files;
+  //   const storageRef = firebase.storage().ref();
+  //   const collectionPhoto = storageRef.child('evidence');
+  //   const filesRefs = [];
+  //   for (let i = 0; i < files.length; i++) {
+  //     const fileRef = collectionPhoto.child(Date.now()+'_'+files[i].name);
+  //     await fileRef.put(files[i])
+  //     filesRefs.push(await fileRef.getDownloadURL());
+  //   }
+  //   console.log('URLS refs', filesRefs);
 
-    setImages((prev) => [...prev, ...filesRefs]);
-    dispatch(changeFireBaseCard(props.card, {images}))
-  }
+  //   setImages((prev) => [...prev, ...filesRefs]);
+  //   dispatch(changeFireBaseCard(props.card, {images}))
+  // }
 
   return (
-    <div className="task_card">
       <ul className="task_card_list">
         {props.card.task?.map((el, i) => {
           return (
             <li
               className={`task_card__item ${el.status ? 'task_card__item_finish' : 'task_card__item_inWork'
                 }`}
-              key={el.uid}
+              key={i}
             >
-              {i + 1}. {el.title}
+              {el.title}
               {props.card.status === 'work' ? (
-                <>
-                  <input className="task_card__comleted_btn" type="file" onChange={handlerAddPhoto} multiple />
-                  <button className="task_card__comleted_btn" onClick={() => { handlerClick(i) }}>{el.status ? 'UnComplete' : 'Comleted'}</button>
-                </>
+                <button className="task_card__comleted_btn" onClick={() => { handlerClick(i) }}>{el.status ? 'Готово' : 'Выполнить'}</button>
               ) : (
                 ''
               )}
@@ -67,6 +64,5 @@ export default function TaskCard(props) {
           );
         })}
       </ul>
-    </div>
   );
 }
