@@ -1,24 +1,88 @@
 .createCardForm {
   margin: 0;
   padding: 0;
+  display: grid;
+  grid-template-rows: 4% repeat(4, 22%) 8%;
+  grid-template-columns: repeat(4, 25%);
+  grid-area: content;
+  grid-template-areas:
+    'title title title title'
+    'description description task task'
+    'description description task task'
+    'description description task task'
+    'description description task task'
+    'create create create create ';
+}
+
+.createCardForm__title {
+  margin: 15px 0 0 0;
+  padding: 0;
+  grid-area: title;
+  text-align: center;
+}
+.createCardForm_description {
+  margin: 30px;
+  padding: 0;
+  grid-area: description;
   display: flex;
   flex-flow: column nowrap;
+  align-content: center;
   align-items: center;
   justify-content: flex-start;
-  grid-area: content;
+}
+
+.createCardForm_task {
+  margin: 30px;
+  padding: 0;
+  grid-area: task;
+  display: flex;
+  flex-flow: column nowrap;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .createCardForm__input {
-  margin: 5px 0 5px 0;
-  padding: 0;
-  width: 450px;
-  height: 50px;
+  margin: 15px 0 0 0;
+  display: block;
+  width: 350px;
+  font-family: Poppins-Regular;
+  font-size: 18px;
+  color: #666666;
+  line-height: 1.2;
+  padding: 0 25px;
+  min-height: 35px;
   text-align: center;
-  font-size: 22px;
-  border-radius: 20px;
 }
 
-.city__chouse {
+.createCardForm_add_card_btn {
+  margin: 0 0 20px 0;
+  width: 380px;
+  height: 35px;
+  font-family: Poppins-Regular;
+  background-color: #fff;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #00ad5f;
+  text-transform: uppercase;
+  grid-area: create;
+  justify-self: center;
+}
+
+.createCardForm_add_card_btn:hover {
+  background: #00ad5f;
+  color: #fff;
+}
+/* 
+.createCardForm__input:focus {
+  pointer-events: none;
+  border: 1px solid #00ad5f;
+
+  visibility: visible;
+  opacity: 1;
+}
+
+.createCardForm_city__chouse {
   margin: 0;
   padding: 0;
   max-width: 450px;
@@ -26,3 +90,82 @@
   font-size: 16px;
   border-radius: 20px;
 }
+
+.createCardForm_next_btn {
+  margin: 10px 0 0 0;
+  width: 180px;
+  height: 35px;
+  font-family: Poppins-Regular;
+  background-color: #fff;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #00ad5f;
+  text-transform: uppercase;
+}
+
+.createCardForm_next_btn:hover {
+  background: #00ad5f;
+  color: #fff;
+}
+
+.createCardForm_new_task {
+  margin: 10px 0 0 0;
+  padding: 30px 5px 5px;
+  width: 50vw;
+  max-height: 350px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-content: center;
+  align-items: center;
+  justify-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow-y: scroll;
+}
+
+.createCardForm__delete_task {
+  margin: 0;
+  padding: 0;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.createCardForm__add_task {
+  margin: 0;
+  padding: 0;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.createCardForm__input_task {
+  margin: 15px 0 0 0;
+  display: block;
+  min-width: 300px;
+  font-family: Poppins-Regular;
+  font-size: 18px;
+  color: #666666;
+  line-height: 1.2;
+  padding: 0 25px;
+  min-height: 35px;
+  text-align: center;
+}
+
+.createCardForm__delete_task_icon {
+  margin: 0;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+}
+
+.createCardForm__add_task_icon {
+  margin: 0;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+} */

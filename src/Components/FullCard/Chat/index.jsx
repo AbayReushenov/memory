@@ -14,7 +14,9 @@ export default function ChatCard(props) {
     .firestore()
     .collection('chats')
     .doc(props.card.uid);
-  const [messages] = useCollectionData(messagesRef.collection('messages').orderBy('time'));
+  const [messages] = useCollectionData(
+    messagesRef.collection('messages').orderBy('time'),
+  );
 
   const handleConfimInvite = (userInviter) => {
     dispatch(
@@ -64,8 +66,8 @@ export default function ChatCard(props) {
     default:
       if (user.uid === props.card.worker || user.uid === props.card.author) {
         return (
-          <div className="card_chat">
-            <div className="chat_user_action">
+          <div id="card_chat" className="card_chat">
+            <form className="chat_user_action">
               <input
                 className="chat_user_input"
                 onChange={(e) => setValue(e.target.value)}
@@ -77,8 +79,8 @@ export default function ChatCard(props) {
               >
                 отправить
               </button>
-            </div>
-            <ul className="chat_card_list">
+            </form>
+            <ul id="chat_card_list" className="chat_card_list">
               {messages?.map((el) => (
                 <li
                   className={`chat_card_msg
@@ -97,10 +99,11 @@ export default function ChatCard(props) {
                       : 'chat_card_msg_user'
                   }`}
                   >
-                    <p className="chat_card_user_name">name:{el.name}</p>
-                    <p className="chat_card_user_time">time:{el?.time?.toDate().toLocaleDateString('ru-RU')}</p>
+                    <p className="chat_card_msg_info">
+                      {el.name} {el?.time?.toDate().toLocaleDateString('ru-RU')}
+                    </p>
+                    <p className="chat_card_msg_text">{el.message}</p>
                   </div>
-                  <p className="chat_card_user_msg">mess:{el.message}</p>
                 </li>
               ))}
             </ul>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import Card from '../Card';
 import './styles.css';
@@ -10,11 +9,7 @@ export default function AllCard() {
   return (
     <ul className="list__card">
       {cards.length > 0
-        ? cards.map((el, index) => (
-            <Link className="card" key={index} to={`/card/${el.uid}`}>
-              <Card item={el} index={index + 1} />
-            </Link>
-          ))
+        ? cards.map((el, index) => el = <Card key={el.uid} item={el} index={index + 1} />)
         : 'Нет заявок'}
     </ul>
   );
