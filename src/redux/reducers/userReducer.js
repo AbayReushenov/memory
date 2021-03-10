@@ -8,7 +8,7 @@ function userReducer(user = {}, action) {
     case TYPES.ADD_MONEY:
       return {
         ...user,
-        money: Number(user.money) + Number(action.payload.money),
+        money: Number(user.money) + Number(action.payload),
       };
 
     case TYPES.ADD_AVATAR:

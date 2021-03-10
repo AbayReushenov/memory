@@ -21,7 +21,7 @@ export default function DescriptionCard(props) {
   const handlerInvitecard = (e) => {
     switch (e.target.textContent) {
       case 'Удалить Карточку':
-        dispatch(deleteCardFireBase(props.card.uid));
+        dispatch(deleteCardFireBase(user, props.card));
         history.push('/yuorCard');
         break;
       case 'Редактировать Карточку':
