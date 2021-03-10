@@ -70,7 +70,7 @@ export default function Navigation(props) {
             type="button"
             onClick={handlerRegisterClick}
           >
-            Зарегестрироваться
+            Зарегистрироваться
           </button>
         </div>
       </nav>
