@@ -122,6 +122,7 @@ export function changeFireBaseCard(card, newData) {
     console.log('card actions new data card', newData);
     const update = {};
     const data = { ...card, ...newData };
+    console.log('DATA',data);
     update['cards/' + card.uid] = data;
     await firebase.database().ref().update(update);
     dispatch(changeCard(data));

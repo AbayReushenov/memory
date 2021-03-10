@@ -11,7 +11,7 @@ export default function AwaitInvaitCard() {
   return (
     <ul className="list__card">
       {cards
-        .filter((el) => user.invite.includes(el.uid))
+        .filter((el) => user?.invite?.includes(el.uid))
         .map((el, i) => {
           return <Card key={el.uid} item={el} index={i + 1} />;
         })}

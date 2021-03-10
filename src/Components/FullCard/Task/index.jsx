@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { changeFireBaseCard } from '../../../redux/actionCreators/cardsActions';
 import firebase from 'firebase';
@@ -6,6 +6,7 @@ import firebase from 'firebase';
 import './styles.css';
 
 export default function TaskCard(props) {
+  const [images, setImages] = useState(props.card.images ? props.card.images : []);
   const messageDb = firebase.firestore();
   const dispatch = useDispatch();
   const handlerClick = (index) => {
@@ -27,6 +28,22 @@ export default function TaskCard(props) {
     })
   }
 
+  const handlerAddPhoto = async (e) => {
+    const files = e.target.files;
+    const storageRef = firebase.storage().ref();
+    const collectionPhoto = storageRef.child('evidence');
+    const filesRefs = [];
+    for (let i = 0; i < files.length; i++) {
+      const fileRef = collectionPhoto.child(Date.now()+'_'+files[i].name);
+      await fileRef.put(files[i])
+      filesRefs.push(await fileRef.getDownloadURL());
+    }
+    console.log('URLS refs', filesRefs);
+
+    setImages((prev) => [...prev, ...filesRefs]);
+    dispatch(changeFireBaseCard(props.card, {images}))
+  }
+
   return (
     <div className="task_card">
       <ul className="task_card_list">
@@ -39,7 +56,10 @@ export default function TaskCard(props) {
             >
               {i + 1}. {el.value}
               {props.card.status === 'work' ? (
-                <button className="task_card__comleted_btn" onClick={() => { handlerClick(i) }}>{el.status ? 'UnComplete' : 'Comleted'}</button>
+                <>
+                  <input className="task_card__comleted_btn" type="file" onChange={handlerAddPhoto} multiple />
+                  <button className="task_card__comleted_btn" onClick={() => { handlerClick(i) }}>{el.status ? 'UnComplete' : 'Comleted'}</button>
+                </>
               ) : (
                 ''
               )}
