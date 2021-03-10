@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   addInviteFireBaseUser,
   removeInviteFireBaseUser,
-  transferMoney
+  transferMoney,
 } from '../../../redux/actionCreators/userAction';
 import {
   addInviteFireBaseCard,
@@ -48,66 +48,84 @@ export default function DescriptionCard(props) {
 
   return (
     <div className="description_card">
-      <p>Титл: {props.card.title}</p>
-      <p>Описание: {props.card.description}</p>
-      <p>Стоимость: {props.card.price}</p>
-      <p>Дата завершения:{props.card.dateFinalTask}</p>
-      <p>Локация: {props.card.loaction?.strLoc}</p>
-      {props.card.author === user.uid && props.card.status === 'search' ? (
-        <button
-          type="button"
-          onClick={(e) => {
-            handlerInvitecard(e);
-          }}
-        >
-          Удалить Карточку
-        </button>
-      ) : (
-        ''
-      )}
-      {props.card.author === user.uid && props.card.status === 'search' ? (
-        <button
-          type="button"
-          onClick={(e) => {
-            handlerInvitecard(e);
-          }}
-        >
-          Редактировать Карточку
-        </button>
-      ) : (
-        ''
-      )}
-      {props.card.author === user.uid && props.card.status === 'work' ? (
-        <button
-          type="button"
-          onClick={(e) => {
-            handlerInvitecard(e);
-          }}
-        >
-          Завершить
-        </button>
-      ) : (
-        ''
-      )}
-      {props.card.invite?.find((el) => el.uid === user.uid && props.card.status === 'search') ? (
-        user.uid !== props.card.author && <button
-          type="button"
-          onClick={(e) => {
-            handlerInvitecard(e);
-          }}
-        >
-          Отменить Предложение
-        </button>
-      ) : (
-        user.uid !== props.card.author && props.card.status === 'search' && <button
-          type="button"
-          onClick={(e) => {
-            handlerInvitecard(e);
-          }}
-        >
-          Предложить помощь
-        </button>
-      )}
+      <p className="description_card_title">{props.card.title}</p>
+      <p className="description_card_subtitle">{props.card.description}</p>
+      <p className="description_card_price">
+        Благодарность при завершении: {props.card.price} Р.
+      </p>
+      <p className="description_card_finish_date">
+        Дата завершения:{props.card.dateFinalTask}
+      </p>
+      <p className="description_card_location">
+        Локация: {props.card.loaction?.strLoc}
+      </p>
+      <div className="description_card_action">
+        {props.card.author === user.uid && props.card.status === 'search' ? (
+          <button
+            className="description_card_btn"
+            type="button"
+            onClick={(e) => {
+              handlerInvitecard(e);
+            }}
+          >
+            Удалить Карточку
+          </button>
+        ) : (
+          ''
+        )}
+        {props.card.author === user.uid && props.card.status === 'search' ? (
+          <button
+            className="description_card_btn"
+            type="button"
+            onClick={(e) => {
+              handlerInvitecard(e);
+            }}
+          >
+            Редактировать Карточку
+          </button>
+        ) : (
+          ''
+        )}
+        {props.card.author === user.uid && props.card.status === 'work' ? (
+          <button
+            className="description_card_btn"
+            type="button"
+            onClick={(e) => {
+              handlerInvitecard(e);
+            }}
+          >
+            Завершить
+          </button>
+        ) : (
+          ''
+        )}
+        {props.card.invite?.find(
+          (el) => el.uid === user.uid && props.card.status === 'search',
+        )
+          ? user.uid !== props.card.author && (
+              <button
+                className="description_card_btn"
+                type="button"
+                onClick={(e) => {
+                  handlerInvitecard(e);
+                }}
+              >
+                Отменить Предложение
+              </button>
+            )
+          : user.uid !== props.card.author &&
+            props.card.status === 'search' && (
+              <button
+                className="description_card_btn"
+                type="button"
+                onClick={(e) => {
+                  handlerInvitecard(e);
+                }}
+              >
+                Предложить помощь
+              </button>
+            )}
+      </div>
     </div>
   );
 }

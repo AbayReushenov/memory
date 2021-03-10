@@ -12,7 +12,9 @@ export default function FormCreateCard() {
   // При вводе пользователя значения в инпут адреса, находим возможные варианты и показываем пользователю для выбора
   const handlerClickCheckAdres = async (userValue) => {
     if (userValue !== '') {
-      const url = `https://geocode-maps.yandex.ru/1.x/?geocode=${userValue}&apikey=6321111e-95db-480c-9b0a-002b9b89e86c&format=json`;
+      const url = encodeURI(
+        `https://geocode-maps.yandex.ru/1.x/?geocode=${userValue}&apikey=6321111e-95db-480c-9b0a-002b9b89e86c&format=json&results=20`,
+      );
       const result = await (await fetch(url)).json();
       console.log(result);
       setLocation(result.response.GeoObjectCollection.featureMember);
