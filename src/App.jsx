@@ -26,8 +26,6 @@ function App() {
                 email: user.email,
                 rating: 0,
                 money: 0,
-                // invite: '',
-                // work: '',
                 avatar: user.photoURL,
               };
               dataBase.ref('users/' + user.uid).set(newUser);
