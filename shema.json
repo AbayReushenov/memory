@@ -7,6 +7,7 @@ USERS {
   invite: [uid card]
   work: [uid card]
   avatarka: data
+  comments: [user: user.worker.name, rating: rating, review:review]
 }
 
 cards: {

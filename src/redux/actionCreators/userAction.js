@@ -112,18 +112,18 @@ export function transferMoney(card) {
 }
 
 //добавление reviw клиенту в редаксе
-export function addReviewUser( review) {
+export function addReviewUser( comments) {
   return {
     type: TYPES.ADD_REVIEW,
-    payload: review
+    payload: comments
   };
 }
 
-export function addReviewUserThunk(user, review) {
+export function addReviewUserThunk(user, comments) {
   return (dispatch) => {
-    dispatch(addReviewUser(review));
+    dispatch(addReviewUser(comments));
     firebase.database().ref('users/' + user.uid).set({
-      ...user, review,
+      ...user, comments,
     })
   }
 }

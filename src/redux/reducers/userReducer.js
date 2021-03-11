@@ -38,7 +38,7 @@ function userReducer(user = {}, action) {
     case TYPES.ADD_REVIEW:
       return {
         ...user,
-        review: [...action.payload],
+        reviewo: [...action.payload],
       }
 
     default:
