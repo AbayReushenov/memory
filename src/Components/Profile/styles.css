@@ -5,9 +5,9 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 300px;
+  width: 350px;
   height: 100%;
-  background-color: rgba(35, 190, 56, 0.3);
+  background-color: rgba(35, 190, 56, 0.7);
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -35,7 +35,8 @@
   justify-content: flex-start;
 
   font-family: Poppins-Regular;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 700;
   color: #555555;
   line-height: 1.2;
   letter-spacing: 2px;
@@ -45,7 +46,7 @@
 }
 
 .profile__items_avatar {
-  margin: 0;
+  margin: 25px 0 25px 0;
   padding: 0;
   position: relative;
 }
@@ -63,9 +64,10 @@
   opacity: 1;
 }
 .profile_avatar {
-  width: 150px;
-  height: 150px;
-  border-radius: 75px;
+  width: 250px;
+  height: 250px;
+  border-radius: 125px;
+  object-fit: cover;
 }
 
 .profile__items_money {

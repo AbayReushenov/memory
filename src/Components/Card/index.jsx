@@ -33,7 +33,7 @@ export default function Card({ item }) {
       </div>
       <h2 className="card_description">{item.title} </h2>
       <h2 className="card_description">{item.description}</h2>
-      <h2 className="card_description">{item.loaction?.strLoc}</h2>
+      <h2 className="card_description">{item.location}</h2>
     </li>
   );
 }

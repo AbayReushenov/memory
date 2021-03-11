@@ -106,19 +106,7 @@ export function removeInviteFireBaseUser(user, cardUid) {
 
 export function transferMoney(card) {
   return async (dispatch) => {
-    let toUserDb;
-    await firebase.database()
-      .ref('users')
-      .child(card.worker)
-      .once('value', (snapshot) => {
-        if (snapshot.exists()) {
-          toUserDb = snapshot.val();
-        }
-      });
-
-    if (toUserDb) {
-      dispatch(addMoneyUserThunk(toUserDb, card.price));
+      dispatch(addMoneyUserThunk(card.worker, card.price));
       dispatch(changeFireBaseCard(card, { status: 'finish' }));
-    }
   }
 }

@@ -32,7 +32,7 @@ export function setCards(data) {
 export function loadCards() {
   return (dispatch) => {
     const result = firebase.database().ref('cards');
-    result.once('value', (snapshot) => {
+    result.on('value', (snapshot) => {
       const firebaseData = snapshot.val();
       const populatedCardsWithUid = Object.values(firebaseData ?? {});
       dispatch(setCards(populatedCardsWithUid));
