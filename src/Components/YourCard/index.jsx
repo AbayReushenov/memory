@@ -11,7 +11,7 @@ export default function YourCard() {
   return (
     <ul className="list__card">
       {cards
-        .filter((el) => el.author === user.uid)
+        .filter((el) => el.author === user.uid && el.status !== 'finish')
         .map((el, i) => {
           return <Card key={el.uid} item={el} index={i + 1} />;
         })}
