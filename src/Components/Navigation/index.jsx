@@ -133,6 +133,18 @@ export default function Navigation(props) {
             return false;
           });
         }}
+        to="/closeList"
+      >
+        Завершенные
+      </NavLink>
+      <NavLink
+        activeClassName="navigation_link_active"
+        className="navigation_link"
+        onClick={() => {
+          props.setprofileView(() => {
+            return false;
+          });
+        }}
         to="/createCard"
       >
         Создать Запрос о помощи

@@ -16,17 +16,18 @@ import AllCard from '../AllCard';
 import Payment from '../Payment';
 import YourCard from '../YourCard';
 import AwaitInvaitCard from '../AwaitInvaitCard';
-import InWorkYourCard from '../InWorkYourCard'
+import InWorkYourCard from '../InWorkYourCard';
 import FullCard from '../FullCard';
 import Performers from '../Performers';
 import About from '../About';
 import ProjectInfo from '../ProjectInfo';
+import CloseList from '../CloseCard';
 
 export default function MainPage() {
   const user = useSelector((state) => state.user);
   const [viewLoginForm, setviewLoginForm] = useState(false);
   const [viewRegisterForm, setviewRegisterForm] = useState(false);
-  const [profileView, setprofileView] = useState(false)
+  const [profileView, setprofileView] = useState(false);
 
   if (!user.uid) {
     return (
@@ -82,6 +83,9 @@ export default function MainPage() {
           </Route>
           <Route exact path="/card/:uid">
             <FullCard />
+          </Route>
+          <Route exact path="/closeList">
+            <CloseList />
           </Route>
           <Redirect to="/" />
         </Switch>
