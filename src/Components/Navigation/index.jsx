@@ -70,7 +70,7 @@ export default function Navigation(props) {
             type="button"
             onClick={handlerRegisterClick}
           >
-            Зарегестрироваться
+            Зарегистрироваться
           </button>
         </div>
       </nav>
@@ -113,7 +113,7 @@ export default function Navigation(props) {
         }}
         to="/waitInviteList"
       >
-        Ждете инвайта
+        Ждут инвайта
       </NavLink>
       <NavLink
         activeClassName="navigation_link_active"
