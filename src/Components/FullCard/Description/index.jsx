@@ -25,11 +25,9 @@ export default function DescriptionCard(props) {
         history.push('/yuorCard');
         break;
       case 'Редактировать Карточку':
-        console.log('Редактировать Карточку');
         break;
       case 'Завершить': {
         dispatch(transferMoney(props.card));
-        console.log('Завершить');
         break;
       }
       case 'Предложить помощь':
@@ -41,7 +39,6 @@ export default function DescriptionCard(props) {
         dispatch(removeInviteFireBaseCard(props.card, user.uid));
         break;
       default:
-        console.log('def');
         break;
     }
   };

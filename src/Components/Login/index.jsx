@@ -10,7 +10,6 @@ export default function Login(props) {
   const history = useHistory();
 
   const onSubmit = async (data) => {
-    console.log('submit');
     try {
       await firebase
         .auth()
@@ -27,7 +26,6 @@ export default function Login(props) {
       await firebase.auth().signInWithPopup(googleScenario);
       history.push('/');
     } catch (error) {
-      console.log(error);
       history.push('/login');
     }
   };
