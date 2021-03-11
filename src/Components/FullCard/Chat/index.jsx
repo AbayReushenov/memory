@@ -64,7 +64,7 @@ export default function ChatCard(props) {
       }
       return <h1>Тут будет чат</h1>;
     default:
-      if (user.uid === props.card.worker.uid || user.uid === props.card.author) {
+      if (user?.uid === props.card?.worker?.uid || user?.uid === props?.card?.author) {
         return (
           <div id="card_chat" className="card_chat">
             <ul id="chat_card_list" className="chat_card_list">
