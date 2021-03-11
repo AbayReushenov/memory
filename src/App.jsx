@@ -12,7 +12,6 @@ function App() {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
-      console.log('USER DATA',user);
       if (user?.uid) {
         dataBase
           .ref('users')
@@ -40,19 +39,6 @@ function App() {
     })
     
   }, []);
-  // if (snapshot.existst()) {
-  //   console.log('проверка наличия в базе',snapshot.val());
-  //   dispatch(signIn(snapshot.val()));
-  // } else {
-  //   database.ref('users/' + user.uid).set({
-  //     name:user.displayName,
-  //     email:user.email,
-  //     money:0,
-  //     rating:0,
-  //   })
-  // }
-  // dispatch(signIn(user));
-
   return (
     <div className="App">
       <MainPage />

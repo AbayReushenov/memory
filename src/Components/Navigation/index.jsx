@@ -14,7 +14,6 @@ export default function Navigation(props) {
       }
     });
     props.setviewLoginForm(true);
-    console.log('handlerLogInClick');
   };
 
   const handlerRegisterClick = () => {
@@ -24,7 +23,6 @@ export default function Navigation(props) {
       }
     });
     props.setviewRegisterForm(true);
-    console.log('handlerRegisterClick');
   };
 
   if (!user.uid) {
