@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import firebase from 'firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import DefaultAvatar from '../../image/question.jpg';
 import {
   signOut,
   addAvatarUserThunk,
@@ -37,17 +38,26 @@ export default function Profile() {
     email: user.email,
     rating: user.rating,
     money: user.money,
-    avatar: user.avatar,
+    avatar: (user.avatar),
   };
   return (
     <div className="profile">
       <ul className="profile__list">
         <li className="profile__items profile__items_avatar">
-          <img
-            className="profile_avatar"
-            alt="profile photo"
-            src={profile.avatar}
-          />
+          {profile.avatar === '' ? (
+            <img
+              className="profile_avatar"
+              alt="profile photo"
+              src={DefaultAvatar}
+            />
+          ) : (
+            <img
+              className="profile_avatar"
+              alt="profile photo"
+              src={profile.avatar}
+            />
+          )}
+
           <input
             className="profile__items profile__items_add_avatar"
             type="file"
