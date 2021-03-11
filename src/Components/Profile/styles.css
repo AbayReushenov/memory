@@ -55,9 +55,32 @@
   margin: 0;
   padding: 0;
   position: absolute;
-  top: 75px;
+  width: 250px;
+  height: 250px;
+  border-radius: 125px;
+  top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   opacity: 0; 
+  color: rgba(0, 0, 0, 0);
+}
+
+.profile__items_add_avatar::before {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../../image/addForo.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 100px 100px;
+  width: 250px;
+  height: 250px;
+  border-radius: 125px;
+  background-color: rgb(64, 151, 29);
 }
 
 .profile__items_add_avatar:hover {

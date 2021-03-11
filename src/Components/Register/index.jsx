@@ -82,7 +82,7 @@ export default function Register(props) {
           className="form_auth_input"
           placeholder="password"
           name="password"
-          ref={register({ required: true, minLength: 6, maxLength: 12 })}
+          ref={register({ required: true })}
         />
         <select
           className="form_auth_input"
