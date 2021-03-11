@@ -1,6 +1,24 @@
 .card_chat {
   margin: 0;
   padding: 0;
+  grid-area: chat;
+  box-shadow: 1px 3px 5px #555555;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 100%;
+  height: 98%;
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+
+.card_chat_invite_msg {
+  margin: 0;
+  padding: 15px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+
   grid-row: 3 / span 4;
   box-shadow: 1px 3px 5px #555555;
   grid-column: 2 / span 4;
@@ -10,18 +28,25 @@
   width: 100%;
   height: 100%;
   background: rgb(255, 255, 255);
-}
+  font-family: Poppins-Regular;
+  font-size: 28px;
+  color: #555555;
+  line-height: 1.2;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
 
+  width: 100%;
+}
 .chat_user_action {
   margin: 0;
   padding: 0;
   position: absolute;
   width: 100%;
   height: 35px;
-  max-height: 35px;
   z-index: 5;
-  left: 5px;
-  bottom: 0;
+  left: 0;
+  bottom: 3px;
   display: flex;
   align-content: flex-start;
   justify-content: flex-start;
@@ -29,18 +54,42 @@
   box-sizing: border-box;
 }
 
+.card_chat_invite_list{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card_chat_invite_msg_btn{
+  margin: 15px 0 0 0;
+  width: 80%;
+  font-family: Poppins-Regular;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #097a47;
+  background: none;
+  text-transform: uppercase;
+}
+
+.card_chat_invite_msg_btn:hover {
+  background: #20500e;
+  border-radius: 15px;
+  color: #fff;
+}
+
 .chat_user_input {
   margin: 0;
   padding: 0;
   display: block;
   flex: 4 1 95%;
-  height: 25px;
+  max-height: 35px;
   font-family: Poppins-Regular;
   font-size: 18px;
   color: #666666;
   line-height: 1.2;
   padding: 0 25px;
-  height: 55px;
   color: #fff;
   background: rgba(0, 0, 0, 0.3);
 }
@@ -112,4 +161,105 @@
 .chat_card_msg_text {
   margin: 0;
   padding: 0;
+}
+
+.card_chat_invite_card {
+  margin: 0;
+  padding: 15px;
+  width: 282px;
+  height: 306px;
+  background: #d9efc7;
+  border-radius: 10px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  box-shadow: 1px 1px grey;
+  overflow: hidden;
+
+}
+
+.card_chat_invite_title {
+  margin: 0 0 15px 0;
+  padding: 0;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #000000;
+}
+
+.card_chat_invite_info {
+  margin: 0;
+  padding: 5px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card_chat_invite_reiting {
+  margin: 0;
+  padding: 0;
+  width: 82px;
+  height: 29px;
+  background: #ffffff;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.card_chat_invite_stars {
+  margin: 0;
+  padding: 0;
+  width: 19px;
+  height: 19px;
+}
+
+.card_chat_invite_stars_value {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+}
+
+.card_chat_invite_feedback {
+  margin: 0;
+  padding: 0;
+  width: 116px;
+  height: 29px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  background: #ffffff;
+  border-radius: 50px;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 12px;
+  line-height: 19px;
+  color: #000000;
+}
+
+.card_chat_invite_img {
+  margin: 10px 0 0 0;
+  padding: 0;
+  width: 147px;
+  height: 147px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 1px 2px grey;
+  z-index: 14;
 }

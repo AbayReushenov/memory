@@ -9,7 +9,7 @@ export default function AllCard() {
   return (
     <ul className="list__card">
       {cards.length > 0
-        ? cards.map((el, index) => el = <Card key={el.uid} item={el} index={index + 1} />)
+        ? cards.filter(el => el.status === 'search').map((el, index) => el = <Card key={el.uid} item={el} index={index + 1} />)
         : 'Нет заявок'}
     </ul>
   );

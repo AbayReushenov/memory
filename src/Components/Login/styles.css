@@ -45,7 +45,7 @@
 .form_auth_title {
   margin: 0;
   font-family: Poppins-Regular;
-  font-size: 20px;
+  font-size: 28px;
   color: #555555;
   line-height: 1.2;
   letter-spacing: 2px;
@@ -79,7 +79,7 @@ input:focus {
 .form_auth_input {
   margin: 15px 0 0 0;
   display: block;
-  width: 90%;
+  width: 50%;
   font-family: Poppins-Regular;
   font-size: 18px;
   color: #666666;
@@ -120,14 +120,15 @@ button:hover {
   margin: 40px 0 0 0;
   display: flex;
   align-content: center;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: space-around;
+  width: 65%;
+  align-self: center;
   height: 55px;
 }
 
 .form_auth_action_btn {
   margin: 0;
-  width: 48%;
+  width: 28%;
   font-family: Poppins-Regular;
   font-size: 15px;
   line-height: 1.4;

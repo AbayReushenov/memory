@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './styles.css';
 import firebase from 'firebase';
 import { useForm } from 'react-hook-form';
@@ -7,6 +7,7 @@ import CloseForm from '../../image/closeForm.png';
 
 export default function Login(props) {
   const { register, handleSubmit, errors } = useForm();
+  const [errorAuth, seterrorAuth] = useState(false);
   const history = useHistory();
 
   const onSubmit = async (data) => {
@@ -17,7 +18,7 @@ export default function Login(props) {
         .signInWithEmailAndPassword(data.Email, data.password);
       history.push('/');
     } catch (error) {
-      history.push('/login');
+      seterrorAuth('Проверьте имя пользователя и пароль');
     }
   };
 
@@ -28,7 +29,7 @@ export default function Login(props) {
       history.push('/');
     } catch (error) {
       console.log(error);
-      history.push('/login');
+      seterrorAuth('Проверьте имя пользователя и пароль');
     }
   };
   const handlerCloseForm = () => {
@@ -50,6 +51,7 @@ export default function Login(props) {
       </button>
       <h2 className="form_auth_title">Добро пожаловать</h2>
       <div className="form_auth_user_data">
+        {errors.Email && 'А где почта?'}
         <input
           type="text"
           placeholder="Email"
@@ -57,14 +59,15 @@ export default function Login(props) {
           name="Email"
           ref={register({ required: true, pattern: /^\S+@\S+$/i })}
         />
-        {errors.Email && 'Your input is required'}
+        {errors.password && 'А где пароль и не больше 20 символов'}
         <input
           type="password"
           placeholder="password"
           className="form_auth_input"
           name="password"
-          ref={register({ required: true, maxLength: 80 })}
+          ref={register({ required: true, maxLength: 20 })}
         />
+      {errorAuth && <p>{errorAuth}</p>}
       </div>
       <div className="form_auth_action">
         <button
