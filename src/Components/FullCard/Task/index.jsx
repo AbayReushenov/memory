@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { changeFireBaseCard } from '../../../redux/actionCreators/cardsActions';
 import firebase from 'firebase';
@@ -41,7 +41,7 @@ export default function TaskCard(props) {
         {props.card.author === user.uid
           ? props.card.status === 'finish' && (
             //  <Link to="/review">Работнику</Link>
-              <button className="task_card_btn_rew" type="button">
+              <button onClick={()=> alert()} className="task_card_btn_rew" type="button">
                 Работнику
               </button>
             )
