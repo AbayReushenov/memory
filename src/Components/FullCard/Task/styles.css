@@ -1,13 +1,12 @@
 .task_card_list {
-  grid-row: 1 / span 4;
-  grid-column: 1;
+  grid-area: task;
   box-sizing: border-box;
   overflow-x: hidden;
   background: rgb(255, 255, 255);
   box-shadow: 1px 3px 5px #555555;
   margin: 0;
   padding: 0;
-  width: 100%;
+  width: 98%;
   height: 100%;
   box-sizing: border-box;
   border-radius: 10px;
@@ -45,4 +44,40 @@
 
 .task_card__item_inWork {
   background: linear-gradient(to left, rgb(196, 62, 62), rgb(131, 202, 117));
+}
+
+.task_card_status_card {
+  margin: 5px 0 0 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: Poppins-Regular;
+  font-size: 18px;
+  color: #555555;
+  line-height: 1.4;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+
+  box-sizing: border-box;
+  border-bottom: 1px solid green;
+  width: 100%;
+  display: block;
+}
+
+.task_card_btn_rew {
+  margin: 0;
+  padding: 0;
+  background: none;
+  font-family: Poppins-Regular;
+  font-size: 18px;
+  color: #555555;
+  line-height: 1.4;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+
+  width: 100%;
+  display: block;
 }

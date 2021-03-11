@@ -39,7 +39,6 @@ export function addAvatarUser(user, avatarUrl) {
 export function addAvatarUserThunk(user, avatar) {
   return (dispatch) => {
     dispatch(addAvatarUser(user, avatar));
-    console.log('NEW USER', { ...user, avatar });
     firebase.database().ref('users/' + user.uid).set({
       ...user, avatar: avatar
     })
@@ -85,7 +84,6 @@ export function addInviteFireBaseUser(user, card) {
 
 
 export function removeInvite(cardUid) {
-  console.log(cardUid);
   return {
     type: TYPES.REMOVE_INVITE_FOR_USER,
     payload: cardUid,

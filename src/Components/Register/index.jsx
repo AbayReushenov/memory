@@ -7,8 +7,7 @@ import { signIn } from '../../redux/actionCreators/userAction';
 import CloseForm from '../../image/closeForm.png';
 
 export default function Register(props) {
-  // eslint-disable-next-line no-unused-vars
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit } = useForm();
   const history = useHistory();
   const dispatch = useDispatch();
   const dataBase = firebase.database();
@@ -23,8 +22,6 @@ export default function Register(props) {
       email: data.email,
       rating: 0,
       money: 0,
-      // invite: '',
-      // work: '',
       avatar: '',
     };
 
@@ -33,20 +30,22 @@ export default function Register(props) {
     history.push('/');
   };
 
-  const onError = (errorss, e) => console.log(errorss, e);
-
   const handlerCloseForm = () => {
     props.setviewRegisterForm(false);
   };
 
   return (
-    <form className="form_auth" onSubmit={handleSubmit(onSubmit, onError)}>
+    <form className="form_auth" onSubmit={handleSubmit(onSubmit)}>
       <button
         className="form_auth_close_btn"
         type="button"
         onClick={handlerCloseForm}
       >
-        <img src={CloseForm} alt='Кнопка закрытия формы' className="form_auth_close_icons" />
+        <img
+          src={CloseForm}
+          alt="Кнопка закрытия формы"
+          className="form_auth_close_icons"
+        />
       </button>
       <h2 className="form_auth_title">Введите данные для регистрация</h2>
       <div className="form_auth_user_data">
@@ -75,7 +74,7 @@ export default function Register(props) {
           type="tel"
           className="form_auth_input"
           placeholder="Mobile number"
-          name="Mobile number"
+          name="mobile_number"
           ref={register({ required: true, minLength: 6, maxLength: 12 })}
         />
         <input
@@ -86,14 +85,14 @@ export default function Register(props) {
           ref={register({ required: true, minLength: 6, maxLength: 12 })}
         />
         <select
-          className="form_auth_select"
-          name="Title"
+          className="form_auth_input"
+          name="gender"
           ref={register({ required: true })}
         >
-          <option className="form_auth_select" value="male">
+          <option className="form_auth_input" value="male">
             муж
           </option>
-          <option className="form_auth_select" value="female">
+          <option className="form_auth_input" value="female">
             женск
           </option>
         </select>

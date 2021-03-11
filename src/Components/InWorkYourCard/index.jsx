@@ -11,7 +11,7 @@ export default function InWorkYourCard() {
   return (
     <ul className="list__card">
       {cards
-        .filter((el) => el.worker === user.uid)
+        .filter((el) => el.worker?.uid === user.uid)
         .map((el, i) => {
           return <Card key={el.uid} item={el} index={i + 1} />;
         })}

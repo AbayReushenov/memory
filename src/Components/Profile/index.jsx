@@ -29,7 +29,6 @@ export default function Profile() {
     const fileRef = avatarsRef.child(file.name);
     await fileRef.put(file);
     const newAvatarUrl = await fileRef.getDownloadURL();
-    console.log('AVATAR', newAvatarUrl);
     dispatch(addAvatarUserThunk(user, newAvatarUrl));
   };
 
@@ -40,7 +39,6 @@ export default function Profile() {
     money: user.money,
     avatar: user.avatar,
   };
-  console.log('PROFILE', profile);
   return (
     <div className="profile">
       <ul className="profile__list">

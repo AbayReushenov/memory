@@ -51,7 +51,6 @@ export function addCardFireBase(incomingData) {
       price,
       user,
     } = incomingData;
-    console.log(task);
     const newCardId = firebase.database().ref().child('cards').push().key;
     const data = {
       uid: newCardId,
@@ -122,10 +121,8 @@ export function removeInviteFireBaseCard(card, userUid) {
 
 export function changeFireBaseCard(card, newData) {
   return async (dispatch) => {
-    console.log('card actions new data card', newData);
     const update = {};
     const data = { ...card, ...newData };
-    console.log('DATA', data);
     update['cards/' + card.uid] = data;
     await firebase.database().ref().update(update);
     dispatch(changeCard(data));

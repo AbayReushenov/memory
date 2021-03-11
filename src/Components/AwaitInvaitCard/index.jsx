@@ -13,7 +13,7 @@ export default function AwaitInvaitCard() {
       {cards
         .filter((el) => user?.invite?.includes(el.uid))
         .map((el, i) => {
-          return <Card key={el.uid} item={el} index={i + 1} />;
+          return el.status === 'search' && <Card key={el.uid} item={el} index={i + 1} />;
         })}
     </ul>
   );
