@@ -110,3 +110,20 @@ export function transferMoney(card) {
       dispatch(changeFireBaseCard(card, { status: 'finish' }));
   }
 }
+
+//добавление reviw клиенту в редаксе
+export function addReviewUser( review) {
+  return {
+    type: TYPES.ADD_REVIEW,
+    payload: review
+  };
+}
+
+export function addReviewUserThunk(user, review) {
+  return (dispatch) => {
+    dispatch(addReviewUser(review));
+    firebase.database().ref('users/' + user.uid).set({
+      ...user, review,
+    })
+  }
+}

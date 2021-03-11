@@ -35,6 +35,11 @@ function userReducer(user = {}, action) {
         ...user,
         worker: [...user.worker, action.payload],
       };
+    case TYPES.ADD_REVIEW:
+      return {
+        ...user,
+        review: [...action.payload],
+      }
 
     default:
       return user;

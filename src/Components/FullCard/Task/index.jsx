@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { changeFireBaseCard } from '../../../redux/actionCreators/cardsActions';
 import firebase from 'firebase';
@@ -38,9 +39,11 @@ export default function TaskCard(props) {
           ? `Исполнитель: ${props.card.worker.name} приступил к работе`
           : 'Ваши работы завершены, Оставьте отзыв'}
         {props.card.author === user.uid ? (
-          <button type="button">Работнику</button>
+          <Link to="/review">Работнику</Link>
+        //  <button type="button" onClick={()=>console.log('Hello')}>Работнику</button>
         ) : (
-          <button type="button">Заказчику</button>
+          <Link to="/review">Заказчику</Link>
+        //  <button type="button" onClick={()=>console.log('Buy')}>Заказчику</button>
         )}
       </h2>
       {props.card.task?.map((el, i) => {

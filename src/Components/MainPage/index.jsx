@@ -21,6 +21,7 @@ import FullCard from '../FullCard';
 import Performers from '../Performers';
 import About from '../About';
 import ProjectInfo from '../ProjectInfo';
+import Review from '../Review';
 
 export default function MainPage() {
   const user = useSelector((state) => state.user);
@@ -65,6 +66,7 @@ export default function MainPage() {
           <Route exact path="/">
             <AllCard />
           </Route>
+          <Route exact path="/review" component={Review} />
           <Route exact path="/yuorCard">
             <YourCard />
           </Route>
