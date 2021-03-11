@@ -21,14 +21,12 @@ import FullCard from '../FullCard';
 import Performers from '../Performers';
 import About from '../About';
 import ProjectInfo from '../ProjectInfo';
-import Review from '../Review';
 
 export default function MainPage() {
   const user = useSelector((state) => state.user);
   const [viewLoginForm, setviewLoginForm] = useState(false);
   const [viewRegisterForm, setviewRegisterForm] = useState(false);
   const [profileView, setprofileView] = useState(false);
-  const [reviewView, setreviewView] = useState(false);
 
   if (!user.uid) {
     return (
@@ -67,9 +65,6 @@ export default function MainPage() {
           <Route exact path="/">
             <AllCard />
           </Route>
-          <Navigation setreviewView={setreviewView} />
-        {reviewView && <Review />}
-          {/* <Route exact path="/review" component={Review('111')} /> */}
           <Route exact path="/yuorCard">
             <YourCard />
           </Route>

@@ -4,10 +4,11 @@ import { useSelector } from 'react-redux';
 import ChatCard from './Chat';
 import DescriptionCard from './Description';
 import TaskCard from './Task';
-
+import Review from '../Review';
 import './styles.css';
 
 export default function FullCard() {
+  const [userUidRewiew, setuserUidRewiew] = useState('')
   const cards = useSelector((state) => state.cards);
   // достаем из ссылки айди карточки на которую нажал пользователь
   const { uid } = useParams();
@@ -19,10 +20,14 @@ export default function FullCard() {
     setCard(cards.find((el) => el.uid === String(uid)));
   });
 
+  const handlerSendrewie = (userUid) => {
+    setuserUidRewiew(userUid)
+  }
   return (
     <div className="cardInfo">
+      {userUidRewiew && <Review userUid={userUidRewiew} setuserUidRewiew={setuserUidRewiew}/>}
       <DescriptionCard card={card} />
-      <TaskCard card={card} />
+      <TaskCard card={card} handlerSendrewie={handlerSendrewie} />
       <ChatCard card={card} />
     </div>
   );

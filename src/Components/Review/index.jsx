@@ -1,28 +1,22 @@
 import React, {useState} from 'react';
 import './styles.css';
-// import { useDispatch,  useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import {
   // addReviewUserThunk,
 } from '../../redux/actionCreators/userAction';
 
 export default function Review(props) {
- // const user = useSelector((state) => state.user);
   
-  const history = useHistory();
-  // const dispatch = useDispatch();
   const [review, setReview] = useState('');
   const [rating, setRating] = useState('');
-  function returnInCard(){
-    history.push('/');
+  function returnInCard() {
+    props.setuserUidRewiew('');
   }
 
   function handleSubmitReview(e) {
     e.preventDefault();
-    alert(props)
+    alert(props.userUid);
     // dispatch(addReviewUserThunk(user, {name: props.name, rating, review}));
-    setReview('');
-    history.goBack();
+    props.setuserUidRewiew('');
   }
 
   return (

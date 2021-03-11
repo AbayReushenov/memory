@@ -3,7 +3,6 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeFireBaseCard } from '../../../redux/actionCreators/cardsActions';
 import firebase from 'firebase';
-import Review from '../../Review';
 
 import './styles.css';
 
@@ -41,13 +40,25 @@ export default function TaskCard(props) {
           : 'Ваши работы завершены, Оставьте отзыв'}
         {props.card.author === user.uid
           ? props.card.status === 'finish' && (
-            //  <Link to="/review">Работнику</Link>
-              <button onClick={Review} className="task_card_btn_rew" type="button">
+              //  <Link to="/review">Работнику</Link>
+              <button
+                onClick={() => {
+                  props.handlerSendrewie(props.card.worker.uid);
+                }}
+                className="task_card_btn_rew"
+                type="button"
+              >
                 Работнику
               </button>
             )
           : props.card.status === 'finish' && (
-              <button onClick={Review} className="task_card_btn_rew" type="button">
+              <button
+                onClick={() => {
+                  props.handlerSendrewie(props.card.author);
+                }}
+                className="task_card_btn_rew"
+                type="button"
+              >
                 Заказчику
               </button>
             )}
