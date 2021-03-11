@@ -1,21 +1,24 @@
 import React, {useState} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import './styles.css';
 import {
-  // addReviewUserThunk,
+  addReviewUserThunk,
 } from '../../redux/actionCreators/userAction';
 
 export default function Review(props) {
   
   const [review, setReview] = useState('');
   const [rating, setRating] = useState('');
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   function returnInCard() {
     props.setuserUidRewiew('');
   }
 
   function handleSubmitReview(e) {
     e.preventDefault();
-    alert(props.userUid);
-    // dispatch(addReviewUserThunk(user, {name: props.name, rating, review}));
+    // alert(props.userUid);
+    dispatch(addReviewUserThunk(user, {userUid: props.userUid, rating, review}));
     props.setuserUidRewiew('');
   }
 
@@ -23,7 +26,7 @@ export default function Review(props) {
     <div className="review">
         <form onSubmit={handleSubmitReview}>
           <p><b>Оцените, пожалуйста, по 10 балльной шкале:</b></p>
-          <p>Вашу Вашего оппонета по данной услуге</p>
+          <p>Вашего оппонета по данной услуге</p>
           <p>0 - Вы неудовлетворены</p>
           <p>10 - Полностью удовлетворен</p>
           <p>

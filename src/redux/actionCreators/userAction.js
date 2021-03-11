@@ -109,7 +109,7 @@ export function transferMoney(card) {
   }
 }
 
-//добавление reviw клиенту в редаксе
+//добавление review клиенту в редаксе
 export function addReviewUser( comments) {
   return {
     type: TYPES.ADD_REVIEW,
@@ -118,10 +118,12 @@ export function addReviewUser( comments) {
 }
 
 export function addReviewUserThunk(user, comments) {
-  return (dispatch) => {
+  return async (dispatch) => {
+    const newcomment = {};
+    const commentArray = user.comments ?? [];
+    const userCommentsObj = { ...user, comments: [...commentArray, comments]};
+    newcomment['users/' + user.uid] = userCommentsObj;
+    await firebase.database().ref().update(newcomment); 
     dispatch(addReviewUser(comments));
-    firebase.database().ref('users/' + user.uid).set({
-      ...user, comments,
-    })
   }
 }
