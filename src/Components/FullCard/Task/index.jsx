@@ -37,11 +37,17 @@ export default function TaskCard(props) {
           : props.card.status === 'work'
           ? `Исполнитель: ${props.card.worker.name} приступил к работе`
           : 'Ваши работы завершены, Оставьте отзыв'}
-        {props.card.author === user.uid ? (
-          <button type="button">Работнику</button>
-        ) : (
-          <button type="button">Заказчику</button>
-        )}
+        {props.card.author === user.uid
+          ? props.card.status === 'finish' && (
+              <button className="task_card_btn_rew" type="button">
+                Работнику
+              </button>
+            )
+          : props.card.status === 'finish' && (
+              <button className="task_card_btn_rew" type="button">
+                Заказчику
+              </button>
+            )}
       </h2>
       {props.card.task?.map((el, i) => {
         return (

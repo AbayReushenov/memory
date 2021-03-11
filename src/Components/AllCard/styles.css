@@ -1,12 +1,13 @@
 .list__card {
-  margin: 0;
-  padding: 2px;
+  margin: 5px;
+  padding: 5px;
   grid-area: content;
   display: grid;
   max-height: 100vh;
-  grid-auto-rows: 50%;
-  grid-template-columns: repeat(3, 31%);
-  gap: 2% 2%;
+  grid-auto-rows: 40%;
+  grid-template-columns: repeat(4, 25%);
   overflow-y: scroll;
   box-sizing: border-box;
+  row-gap: 50px;
+  column-gap: 4px;
 }
