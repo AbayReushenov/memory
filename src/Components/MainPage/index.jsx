@@ -27,7 +27,8 @@ export default function MainPage() {
   const user = useSelector((state) => state.user);
   const [viewLoginForm, setviewLoginForm] = useState(false);
   const [viewRegisterForm, setviewRegisterForm] = useState(false);
-  const [profileView, setprofileView] = useState(false)
+  const [profileView, setprofileView] = useState(false);
+  const [reviewView, setreviewView] = useState(false);
 
   if (!user.uid) {
     return (
@@ -66,7 +67,9 @@ export default function MainPage() {
           <Route exact path="/">
             <AllCard />
           </Route>
-          <Route exact path="/review" component={Review} />
+          <Navigation setreviewView={setreviewView} />
+        {reviewView && <Review />}
+          {/* <Route exact path="/review" component={Review('111')} /> */}
           <Route exact path="/yuorCard">
             <YourCard />
           </Route>
