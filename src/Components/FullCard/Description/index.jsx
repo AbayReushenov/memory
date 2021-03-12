@@ -24,8 +24,6 @@ export default function DescriptionCard(props) {
         dispatch(deleteCardFireBase(user, props.card));
         history.push('/yuorCard');
         break;
-      case 'Редактировать Карточку':
-        break;
       case 'Завершить': {
         dispatch(transferMoney(props.card));
         break;
@@ -66,19 +64,6 @@ export default function DescriptionCard(props) {
             }}
           >
             Удалить Карточку
-          </button>
-        ) : (
-          ''
-        )}
-        {props.card.author === user.uid && props.card.status === 'search' ? (
-          <button
-            className="description_card_btn"
-            type="button"
-            onClick={(e) => {
-              handlerInvitecard(e);
-            }}
-          >
-            Редактировать Карточку
           </button>
         ) : (
           ''
