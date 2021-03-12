@@ -25,6 +25,24 @@
   box-shadow: 1px 2px 1px #555555;
 }
 
+.card_invite_value {
+  margin: 0;
+  padding: 0;
+  font-size: 19px;
+  font-weight: 600;
+  color: #555555;
+  line-height: 1.1;
+  letter-spacing: 2px;
+  text-align: left;
+  font-family: 'Open Sans';
+  width: 50px;
+  height: 50px;
+  background-image: url('../../image/card/info_invite.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
 .card_items_icon {
   margin: 0;
   padding: 0;
